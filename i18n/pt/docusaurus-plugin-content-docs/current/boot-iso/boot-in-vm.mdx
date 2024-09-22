@@ -11,78 +11,78 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
 
-<TabItem value="article" label="Article">
+<TabItem value="article" label="Artigo">
 
-If you're planning to boot Archcraft in Virtual Machines (_For Ex: Virtualbox_), You may notices some issue (which are not issues exactly) mentioned below :
+Se você planeja iniciar o Archcraft em uma Máquina Virtual (_Por Ex: Virtualbox_), você pode ter alguns dos problemas (não são exatamente problemas) mencionados abaixo: 
 
-- Desktop not scaling automatically when changing resolution
-- Wallpaper get stretched when going into fullscreen mode
-- Statusbar not scaled accordingly
-- Screen flickering after changing the theme
-- Cursor is not visible
+- Desktop não escala automaticamente quando muda a resolução
+- Papel de parede fica rasgado quando vai pro modo tela cheia
+- Barra de status não escala de acordo
+- Tela piscando depois de mudar o tema
+- Cursor nã fica visível
 - etc
 
-These are not issues, Exactly. See Archcraft uses standalone window managers only, not desktop environments. So When you go into fullscreen mode or when you change the resolution, Things like wallpaper and statusbar doesn't get updated/reloaded automatically, Unlike in a typical desktop environments.
+Não são problemas, exatamente. O Archcraft usa window managers autonomos, não ambientes gráficos. Então quando você muda para o modo de tela cheia ou muda a resolução, coisas como papel de parede e barra de status podem não ser atualizados ou recarregados automaticamente, diferente de um ambiente gráfico típico
 
-To deal with these scenarios, you can do these things to get the best experience with Archcraft in VMs :
+Para lidar com esses cenários, você pode fazer essas coisas para ter a melhor experiência com o Archcraft em VMs:
 
 <details>
-<summary>1. How to change resolution the correct way?</summary>
+<summary>1. Como mudar a resolução da forma coreta?</summary>
 
-As mentioned already, Archcraft doesn't use DEs which means when you change the resolution, the wallpaper and status bar won't update automatically.
+Como mencionado acima, Archcraftnão usa ambientes gráficos, o que significa que quando você muda a resolução, o papel de parede e a barra de status não são atualizados automaticamente.
 
-But Archcraft comes with few utilities to solve this problem. So when you change the resolution :
-- Use `archcraft-randr` application. Open app launcher and either type **Manage Monitors** or **randr** and use the application. It's a rofi based applet and when you change the mode via this app, the wallpaper and statusbar gets updated as well. This will work in all sessions.
-- If you're in **Openbox**, Right click on desktop, Go to `Preferences > Display / Monitors` and change the resolution/mode. It'll do the same, But only works in Openbox.
+Mas o Archcraft vem com algumas utilidades para resolver esse problema. Então quando você mudar a resolução:
+- Use a aplicação `archcraft-randr`. Abra o lançador de aplicativos e digite **Manage Monitors** ou **randr** e use a aplicação. Este é um applet do rofi e quando você mudar a resolução com esse apĺicativo, o papel de parede e a barra de status irão atualizar também. Isso vai funcionar em todas as sessões.
+- Se você estiver no **Openbox**, clique com o botão direito na área de trabalho, vá em `Prefeências > Display / Monitores` e mude a resolução/modo. Isso vai fazer o mesmo, mas só funciona no Openbox.
 
 </details>
 
 <details>
-<summary>2. How to fix stretched wallpaper and statusbar?</summary>
+<summary>2. Como corrigir o papel de parede e a barra de status?</summary>
 
-Use `archcraft-randr` application, and select the **auto** option.
-
-</details>
-
-<details>
-<summary>3. How to fix screen flickering after changing the theme?</summary>
-
-When you change the theme, the backend for compositor (_picom_) changes to **glx**. It may cause issues in VMs on some hardwares. The solution to this problem is switching back the backend to **xrender**.
-- If you're in openbox, Go to `Preferences > Compositor > use 'xrender' backend`
-- In any other session (_bspwm_), Edit the respective picom config file. For Ex : `~/.config/bspwm/picom.conf`
+Use a aplicação `archcraft-randr` e selecione a opção **auto**.
 
 </details>
 
 <details>
-<summary>4. How to fix invisible cursor?</summary>
+<summary>3. Como corrigir a tela piscando depois de mudar o tema?</summary>
 
-There are two possible causes for this problem :
-1. **`In Xorg`** : the **glx** backend of picom compositor, the solution is switching back to **xrender**.
-2. **`In Wayland`** : When using certain graphics drivers (e.g. the VMSVGA graphics controller or the proprietary NVIDIA driver), the cursor is invisible. This can be fixed by using software cursors : `export WLR_NO_HARDWARE_CURSORS=1`
+Quando você mudar o tema, o backend do compositor (_picom_) muda o **glx**. Isso pode causar problemas em VMs em alguns hardwares. A solução para esse problema é trocar de volta o back para **xrender**.
+- Se você estover no openbox, vá para `Preferências > Compositor > Use o compositor 'xrender'`
+- Em outra sessão (_bspwm_), edite respectivamente o arquivo de configuração do picom. Por ex: `~/.config/bspwm/picom.conf`
 
 </details>
 
-:::danger
+<details>
+<summary>4. Como corrigir o cursor invisível?</summary>
 
-Wayland Compositors doesn't work in Virtual Machines. That means [**`Archcraft Wayland Special Edition ISO`**](https://ko-fi.com/s/213becbf00) and the wayland compositors on [**`Archcraft Prime ISO`**](https://ko-fi.com/s/c925a2a8c1) won't work on Virtual Machines.
+Aqui estão duas possíveis causas para esse problema:
+1. **`No Xorg`**: O **glx**, back do compositor picom, a solução é voltar para o **xrender**.
+2. **`No Wayland`**: Quando certos drivers gráficos são usados (ex: o controle gráfico VMSVGA ou o driver proprietário na NVIDIA), o cursor fica invisível. Isso pode ser consertado usando programas de cursor: `export WLR_NO_HARDWARE_CURSORS=1`
+
+</details>
+
+:::perigo
+
+Compositores Wayland não funcionam em Máquinas Virtuais. Quer dizer que a [**`ISO do Archcraft Wayland Edição Especial`**](https://ko-fi.com/s/213becbf00) e os compositores wayland na [**`ISO do Archcraft Prime`**](https://ko-fi.com/s/c925a2a8c1) não funcionam em Máquinas Virtuais.
 
 :::
 
-:::warning
+:::cuidado
 
-In virtualbox, If you enable **3D Acceleration** and use the default `VMSVGA` display drivers, There's a possibility that the Wayland Compositors work on it. But that may or may not work. 
+No virtualbox, se você ativar **Aceleração 3D** e usar o driver padrão `VMSVGA`, existe a possibilidade dos Compositores Wayland funcionarem. Mas pode ou não funcionar.
 
-> For me, this method worked in the previous version of virtualbox. But it's no longer working for me and I'm not able to run any wayland compositor on virtualbox.
+> Para mim, esse método funcionou em uma versão anterior do virtualbox. Mas nã funcionou por muito tempo e eu não estou dusposto a rodar nenhum compositor wayland no virtualbox.
 
 :::
 
 </TabItem>
 
-<TabItem value="video" label="Video">
+<TabItem value="video" label="Vídeo">
 
-Here's a youtube video about booting Archcraft in Virtualbox.
+Aqui está um vídeo sobre iniciar o Archcraft no VirtualBox.
 
-[![video](https://i3.ytimg.com/vi/5nTNVcqkqfw/maxresdefault.jpg)](https://youtu.be/5nTNVcqkqfw)
+[![vídeo](https://i3.ytimg.com/vi/5nTNVcqkqfw/maxresdefault.jpg)](https://youtu.be/5nTNVcqkqfw)
 
 </TabItem>
 

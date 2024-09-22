@@ -23,169 +23,169 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-**Archcraft ARM : Install Archcraft on ARM Devices**
+**Archcraft ARM : Instalar Archcraft em dispositivos ARM**
 
 ![gif](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/main.gif)
 
-In this guide, We'll learn how to install Archcraft on your ARM Devices.
+Neste guiam nós vamos aprender como instalar o Archcraft em seus dispositivos ARM.
 
-As you already know, Archcraft is just Arch Linux with a bunch of customisations. And So is Archcraft ARM.
+Como você já sabe, Archcraft é apenas Arch Linux com um monte de customizações. E assim é o Archcraft ARM.
 
-## Overview
+## Visão geral
 
-- Support both **ARMv8** `(aarch64, 64bit)` and **ARMv7** `(armv7*, 32bit)` architectures
-- Fully configured `openbox` window manager, with multiple themes
-- Fully configured `bspwm` window manager, with multiple themes
-- Fully configured `i3wm` window manager
-- Everything else that Main Archcraft offers
+- Suporte para ambas arquiteturas **ARMv8** `(aarch64, 64bit)` e **ARMv7** `(armv7*, 32bit)`
+- Configuração total do `openbox` window manager, com múltiplos temas
+- Configuração total do `bspwm` window manager, com múltiplos temas
+- Configuração total do `i3wm` window manager
+- Tudo mais que o Archcraft oferece
 
-## Requirements
-- A supported ARM Machine
-- A Computer Running Linux
-- Active Internet Connection
-- An SDcard (at least 16G in size)
+## Requerimentos
+- Uma máquina que suporte ARM
+- Umcomputador com Linux
+- Conexão com internet ativa
+- Um cartão SD SD (com ao menos 16G de espaço)
 
-## Installation
+## Instalação
 
-For writing this guide, I'll be using a **Raspberry Pi 4**, with a monitor connected to it along with a wired keyboard and mouse. Basically it's a Raspberry Pi Desktop Kit.
+Para escrever essew guia, eu vou usar um **Raspberry Pi 4**, com um monitor conectado e mouse e teclado com fio. Basicamente um kit desktop Raspberry Pi.
 
-Follow the step below to install Archcraft ARM :
+Siga os passos abaixo para instalar o Archcraft ARM:
 
-### Check if device is supported
+### Confira se o seu dispositivo tem suporte
 
-First, Make sure that your ARM device is supported. [**Here's**](https://archlinuxarm.org/platforms) a list of supported devices. For my case, You can see below that my **`RPI4`** is supported. Find if your device is listed here.
+Primeiro, tenha certeza que o seu dispositivo ARM tem suporte. [**Aqui está**](https://archlinuxarm.org/platforms) uma lista de dispositivos que suportam. No meu caso, você pode ver abaixo que o meu **`RPI4`** é suportado. Procure se o seu dispositivo etá listado aqui.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_1.png)
 
-Once you find that your ARM device is supported, Go ahead and install [**Arch Linux ARM**](https://archlinuxarm.org/) on it.
+Sabendo que o seu dispositivo ARM tem suporte, vá em frente e instale o [**Arch Linux ARM**](https://archlinuxarm.org/) nele.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_2.png)
 
-### Install Arch Linux ARM
-Follow the Arch Linux ARM installation guide to install it on your device. I'm going to install Arch Linux ARM on my **`RPI4`**, So I'm going to follow [This Guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-4).
+### Instalar Arch Linux ARM
+Siga o guia de instalação do Arch Linux ARM para instalá-lo no seu dispositivo. Eu vou instalar o Arch Linux ARM em meu **`RPI4`**, então eu vou seguir [este guia](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-4).
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_3.png)
 
-Once the installation is finished, Insert your SDcard on your device and boot Arch Linux ARM.
+Depois que a instalação for concluída, Coloque o seu cartão SD no seu dispositivo e dê boot no Arch Linux ARM.
 
-### Login to Arch Linux ARM
+### Faça Login no Arch Linux ARM
 
-Once booted, Login to the default user account (*alarm*), using **`alarm`** for both username and password.
+Depois de bootado, faça login na conta padrão (*alarm*), usando **`alarm`** para nome de usuário e senha.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_4.png)
 
-After Login, get the root access. Run: `su root` and type **`root`** as the password.
+Depois do login, tenha acesso de root. Rode: `su root` e escreva **`root`** como senha.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_5.png)
 
-Now at this point, You should have been logged in to the root account.
+A partir daqui, você deve estar logado como root.
 
-### Connect to internet
+### Conecte à internet
 
-Now, Connect your device to the internet. If you have an ethernet cable plugged into your device, It should automatically connect to the internet. If not, Run: `wifi-menu` and connect to your wifi network.
+Agora, conecte seu dispositivo à internet. Se você tiver um cabo ethernet plugado no seu dispositivo, certamente vai se conectar automaticamente à internet. Caso contrário, rode: `wifi-menu` e se conecte em seu wifi.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_6.png)
 
-Select your wifi network and enter the password.
+Selecione sua conexão wifi e entre com sua senha.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_7.png)
 
-Once connected to wifi, Check if you have internet access. 
+Uma vez conectado no wifi, veja se tem acesso à internet.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_8.png)
 
-### Update System Time
+### Atualize o Relógio do Sistema
 
-**`Important` :** This is very important. If you've connected your ARM device via ethernet, the time may be correct when you boot and login to Arch Linux ARM. But if the time is not correct, It can cause issues with downloading files, performing system upgrades and installing packages.
+**`Importante`:** Isso é muito importante. Se você estiver com seu dispositivo ARM conectado via ethernet, o relógio pode estar correto quando iniciar e fizer login no Arch Linux ARM. Mas se o relógio não estiver correto, isso pode causar problemas com o download dos arquivos, atualizações do sistema e instalação de pacotes.
 
-Run: `timedatectl` command to check if the time is correct. As you can see that the time is not correct (It's March 2024 at this time). So, Let's fix it.  
+Rode o comando: `timedatectl` para ver se o relógio está certo. Como você pode ver o relógio não está certo (É março de 2024 agora). Então, vamos corrigir isso.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_9.png)
 
-To Set the time manually, first we need to disable NTP Service temporarily. Run: `timedatectl set-ntp 0`
+Para configurar o relógio manualmente, primeiro temos que desativar o serviço de NTP temporariamente. Rode: `timedatectl set-ntp 0`
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_10.png)
 
-Now, Set the time using **YYYY-MM-DD HH:MM:SS** format. For example, Run: `timedatectl set-time "2023-03-15 13:45:00"`
+Agora, acerte a hora usando o formato **YYYY-MM-DD HH:MM:SS**. Por exemplo, rode: `timedatectl set-time "2023-03-15 13:45:00"`
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_11.png)
 
-Once the time is fixed, Run: `timedatectl set-ntp 1` to enable the NTP Service again.
+Uma vez que o relógio foi corrigido, rode: `timedatectl set-ntp 1` para ativar o serviço de NTP novamente.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_12.png)
 
 
-### Download Installer
+### Baixe o Instalador
 
-Now, Let' download the Archcraft ARM installer, Run the following command :
+Agora, vamos baixar o instalados do Archcraft ARM, rode o seguinte comando:
 ```bash
 curl -LO https://github.com/archcraft-os/archcraft-arm/releases/download/X.Y/archcraft-arm.tar.gz
 ```
 
-Replace **X.Y** with the latest release (eg: 1.0). Check [here](https://github.com/archcraft-os/archcraft-arm/releases) for latest releases.
+Troque **X.Y** para a última versão (ex: 1.0). Veja [aqui](https://github.com/archcraft-os/archcraft-arm/releases) as últimas versões.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_13.png)
 
-Once the installer file is downloaded, Extract it. Run the following command :
+Depois de baixar o instalador, extraia ele. Rode o comando a seguir:
 ```bash
 tar -xzvf archcraft-arm.tar.gz
 ```
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_14.png)
 
-Next, Change to the extracted directory. Run: `cd archcraft-arm`
+Agora, mude para o diretório extraído. Rode: `cd archcraft-arm`
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_15.png)
 
-### System Configuration
+### Configuração do Sistema
 
-Before running the install script, Edit `customize.sh` script and configure the installed system according to your needs. Run: `nano customize.sh`
+Depois de rodar o script de instalação, edite o script `customize.sh` e configure o sistema instalado de acordo com as suas necessidades. Rode: `nano customize.sh`
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_16.png)
 
-By using the values you provide, The install script will - 
-- Set **hostname** for your computer
-- Set system **locale** (language)
-- Set **timezone**
-- Set **system clock**
-- Create your user account
+Para usar os valores que você fornecer, o script de instalação vai - 
+- Selecionar o **hostname** para seu computador
+- Selecionar a **localização** do seu sistema (idioma)
+- Selecionar a **timezone**
+- Selecionar o **relógio do sistema**
+- Criar a sua conta de usuário
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_17.png)
 
-Once you're done editing, press <kbd>ctrl + o</kbd> to save the file and <kbd>ctrl + x</kbd> to exit `nano` editor.
+Quando terminar de editar, aperte <kbd>ctrl + o</kbd> para salvar o arquivo e <kbd>ctrl + x</kbd> para sair do `nano`.
 
-### Run Installation Script
+### Execute o Script de Instalação
 
-Now, It's time to run the install script. Run: `./install.sh` script and let it do the job.
+Agora, é hora de executar o script de instalação. Rode o script: `./install.sh` e deixe-o fazer o trabalho.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_18.png)
 
-The script will initialize the pacman keyring and populate the Arch Linux ARM package signing keys. Then It'll add the **archcraft-arm** repository in the pacman config file and perform a full system upgrade.
+O script irá inicializar o pacman e vai preencher as chaver de assinatura do Arch Linux ARM. Depois irá adicionar o repositório **archcraft-arm** no arquivo de configuração do pacman e fazer uma atualização completa do sistema.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_19.png)
 
-Then It'll install all the required packages one-by-one. This is going to take some time, So be patient. You can edit the `install.sh` script and use the function that installs all the packages at once. Don't forget to comment out the other one.
+Depois ele irá instalar os pacotes requeridos um por um. Isso vai levar algum tempo, seja paciente. Você pode editar o script `install.sh` e usar a função que instala todos os pacotes de uma vez. Não se esqueça de comentar o outro.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_20.png)
 
-Next, It'll enable all the required services, targets and disable the one not needed anymore.
+Agora, ele vai ativar os serviços requeridos, escolher e desativar o que não precisamos mais.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_21.png)
 
-Later on, It'll install a few system files and default configuration files.
+Depois disso, irá instalar alguns arquivos do sistema e configurações padrão.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_22.png)
 
-Next, It'll configure the installed system based on the values you've provided in that `customize.sh` file. Then, It'll perform various misc operations, and ask you if you want to delete the default user account.
+Em seguida, irá configurar o sistema instalado baseado nas informações que você passou para o arquivo `customize.sh`. Depois, irá fazer várias operações, e te perguntar se você deseja deletar a conta de usuário padrão.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/installer/installer_23.png)
 
-### Reboot the system
+### Reinicie o Sistema
 
-Once the installation is finished, Reboot your device. <br/>
-If Everything went well, You should see the **sddm** login screen. Enter the password (_that you've added in the `customize.sh` file_) to login.
+Uma vez que a instalação tenha terminado, reinicie seu dispositivo. <br/>
+Se tudo terminou bem, você poderá ver a tela de login **sddm**. Entre com sua senha (_a que você adicionou no arquivo `customize.sh`_) para fazer o login.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/arm/other/sddm.png)
 
@@ -194,24 +194,24 @@ If Everything went well, You should see the **sddm** login screen. Enter the pas
 ## Changelogs
 
 <details>
-<summary><b>Changelog (March 2024) : First Release</b></summary>
+<summary><b>Changelog (Março de 2024) : Primeira Versão</b></summary>
 
-**Date** : `March 12th, 2024`
+**Data** : `12 de março de 2024`
 
-- Released first version of Archcraft ARM
-- Fully Customized `plymouth` & `sddm`
-- Fully configured `openbox`, `bspwm` and `i3wm` window managers
-- Basic Applications Only, No Bloatware
-- Full `Network Manager` Support, Various VPN plugins
-- Built-in `Bluetooth` Support
-- Pipewire For `Sound/Audio` (Systemwide, Bluetooth, Jack)
-- Built-in `Printer` Support
-- Almost `All Audio, Video and Image` Codecs
-- Full `File manager functionality` (Mounting, Networking, Archiving, etc)
-- Built-in `AUR support`
-- Minimal User Interface
-- Multiple Desktop Styles
-- Archcraft Icons, Themes, Wallpapers, Fonts
+- Lançada a primeira versão do Archcraft ARM
+- Customização total do `plymouth` & `sddm`
+- Configuração total dos window managers `openbox`, `bspwm` e `i3wm`
+- Somente aplicações básicas, nada desnecessário
+- Suporte completo para `Network Manager`, vários plugins VPN
+- Suporte para `Bluetooth` integrado
+- Pipewire para `Som/Áudio` (Systemwide, Bluetooth, Jack)
+- Suporte para `Impressora` integrados
+- Quase todos os codecs de `Áudio, Vídeo e Imagem`
+- Total funcionalidade do `Gestor de arquivos` (Montagem, Conexão, Arquivamento, etc)
+- Suporte para `AUR` integrado
+- Interface de usuário mínima
+- Múltiplos estilos de Desktop
+- Ícones, temas, papéis de parede e fontes do Archcraft
 - Etc
 
 </details>
@@ -220,7 +220,7 @@ If Everything went well, You should see the **sddm** login screen. Enter the pas
 
 ## Screenshots
 
-Here's a few screenshots of `Openbox`, `Bspwm` and `i3wm` desktops.
+Aqui estão algumas capturas de tela do `Openbox`, `Bspwm` e `i3wm`.
 
 <Tabs>
 
@@ -268,39 +268,39 @@ Here's a few screenshots of `Openbox`, `Bspwm` and `i3wm` desktops.
 ## FAQs
 
 <details>
-<summary><b>Why there's no ready to flash IMG or TAR file?</b></summary>
+<summary><b>Por que não tem uma IMG ou TAR pronta?</b></summary>
 
-One Answer : **`Maintainability`**
+Uma resposta: **`Manutenção`**
 
-There are so many ARM devices and each and every device is different and requires a device specific OS (and bootloader files) to work. You can see there are different Arch Linux ARM builds for different devices. I neither have so many ARM devices nor the time to ~create~ maintain for each and every device.
+Existem muitos dispositivos ARM e cada dispositivo requer um OS específico (e bootloader diferente) para funcionar. Você pode ver que existe diferentes construções do Arch Linux ARM para diferentes dispositivos. Eu não tenho tantos dispositivos ARM nem tempo para ~criar~ ujma versão para cada dispositivo.
 
-Arch Linux ARM is already doing that and once again, Archcraft is just Arch with customisations. So, This way of distributing Archcraft ARM is easy for me and I only have to maintain one project and it'll work on all devices as long as they are supported by Arch Linux ARM. 
+Arch Linux ARM já está fazendo isso e, de novo, Archcraft é só o Arch com  customizações. Então, essa forma de distribuir o Archcraft ARM é fácil para mim e eu só tenho que manter um projeto e ele funciona em todos  os dispositivos que suportam o Arch Linux ARM.
 
-This way, I'll be able to maintain it for a long time and you'll be able to enjoy it for a long time. Win-Win for everyone.
-
-</details>
-
-<details>
-<summary><b>How are the updates going to work?</b></summary>
-
-Just like regular Archcraft, Via pacman.
+Dessa forma, eu estou disposto a manter isso por um longo tempo e vocês podem aproveitar por bastante tempo. Ganhar-Ganhar para todos.
 
 </details>
 
 <details>
-<summary><b>Where are the keybindings?</b></summary>
+<summary><b>Como as atualizações vão funcionar?</b></summary>
 
-For any help with Configurations and Keybindings, visit the respective window manager's page.
-
-**Openbox :** [`Here`](/docs/window-managers/stacking-wm/openbox) <br/>
-**Bspwm :** [`Here`](/docs/window-managers/tiling-wm/bspwm) <br/>
-**i3wm :** [`Here`](/docs/window-managers/tiling-wm/i3wm)
+Como o Archcraft normal, via pacman.
 
 </details>
 
 <details>
-<summary><b>Where do I report issues?</b></summary>
+<summary><b>Onde estão os atalhos de teclado?</b></summary>
 
-Have you found any bug and want to report it, Open an issue on [Github](https://github.com/archcraft-os/archcraft-arm/issues)
+Para qualquer ajuda com configurações e atalhos de teclado, visite a página respectiva aos window manager's
+
+**Openbox :** [`Aqui`](/docs/window-managers/stacking-wm/openbox) <br/>
+**Bspwm :** [`Aqui`](/docs/window-managers/tiling-wm/bspwm) <br/>
+**i3wm :** [`Aqui`](/docs/window-managers/tiling-wm/i3wm)
+
+</details>
+
+<details>
+<summary><b>Onde eu reporto os problemas?</b></summary>
+
+Se você tiver qualquer problema que queira reportar, abra uma issue no [Github](https://github.com/archcraft-os/archcraft-arm/issues)
 
 </details>
