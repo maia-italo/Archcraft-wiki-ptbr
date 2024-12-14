@@ -23,57 +23,57 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-River is a dynamic tiling Wayland compositor with flexible runtime configuration.
+River é um compositor Wayland que organiza as janelas lado a lado de forma dinâmica com configurações flexíveis em tempo real.
 
 [![video](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/river/main.png)](https://youtu.be/MwnK6arB2Rc)
 
 :::tip[Archcraft River]
 
-Get River From [**`ko-fi`**](https://ko-fi.com/s/69957c0587) And Support Archcraft Development.
+Garanta o Riven em [**`ko-fi`**](https://ko-fi.com/s/69957c0587) e ajude o desenvolvimento do Archcraft.
 
 :::
 
-<!-- Installation --------------------------------- -->
+<!-- Instalação --------------------------------- -->
 
-## Installation
+## Instalalção
 
-Follow the instructions below to install River :
+Siga as intruções abaixo para instalar o RIver:
 
-- Download **river.tar.gz** file from [ko-fi](https://ko-fi.com/s/69957c0587), and save it in a directory.
-- Open a terminal in same directory and run the following command to extract the tar file :
+- Baixe o aquivo **river.tar.gz em [ko-fi](https://ko-fi.com/s/69957c0587), e salve-o em uma pasta.
+- Abra o terminal no mesmo diretório e execute o comando seguinte para extrair o arquivo tar:
 ```bash
 $ tar -xzvf river_YYYY-MM-DD.tar.gz
 ```
-- Once the file is extracted, change to the extracted directory which should be **`river`**
+- Depois de extrair o arquivo, mude para o diretório extraído que deve ser **`river`**
 
 <Tabs>
 
-<TabItem value="wc_1" label="Install On Archcraft" default>
+<TabItem value="wc_1" label="Instalar no Archcraft" default>
 
-On Archcraft, You can simply install the provided package in **pkg** directory with :
+No Archcraft, você pode simplesmente instalar o arquivo fornecido no diretório **pkg** com:
 ```bash
 $ sudo pacman -U archcraft-river-X.Y-Z-any.pkg.tar.zst
 ```
 
 </TabItem>
 
-<TabItem value="wc_2" label="Install On Other Distributions" default>
+<TabItem value="wc_2" label="Instale em Outras Distribuiçoes" default>
 
-If you want to install this setup on Arch Linux or on any other distro, follow the points below : 
-- Install the following programs on your Linux distro: `river` `lua` `lua-posix` `wlr-randr` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland` `xdg-desktop-portal-wlr` `playerctl` `pastel` `python-pywal` `alacritty` `rofi` `pulsemixer`
-- After installing programs above, Create river directory in **`~/.config`**
+Se você quer instalar essa config no Arch Linux ou em qualquer outra distro, siga os pontos abaixo:
+- Instale os seguintes programas na sua distro Linux: `river` `lua` `lua-posix` `wlr-randr` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland` `xdg-desktop-portal-wlr` `playerctl` `pastel` `python-pywal` `alacritty` `rofi` `pulsemixer`
+- Depois de instalar os progrmas acima, crie uma pasta chamada river em **`~/.config`**
 ```bash
 $ mkdir -p ~/.config/river
 ```
-- Copy Everything from _dotfiles_ to **`~/.config/river`** 
+- Copie tudo de _dotfiles_ para **`~/.config/river`**
 ```bash
 $ cp -r ./dotfiles/* ~/.config/river/
 ```
-- Logout and login to your amazingly configured River WC.
+- Faça logout e login em seu incrpivel e configurado River WC.
 
-> Install the **fonts** from `fonts` and **GTK theme, icons and cursor** from `gtk` directory for overall appearance.
+> Instale as **fontes** de `fonts` e **tema GTK, ícones e cursor** de `gtk` para uma aparência geral.
 
 </TabItem>
 
@@ -81,61 +81,61 @@ $ cp -r ./dotfiles/* ~/.config/river/
 
 :::info[Archcraft Prime]
 
-<Highlight color="#62aeef">River</Highlight> comes pre-installed on [**`Archcraft WSE`**](https://ko-fi.com/s/213becbf00) and [**`Archcraft Prime`**](https://ko-fi.com/s/c925a2a8c1) ISOs.
+<Highlight color="#62aeef">River</Highlight> vem pré-instalado nas ISOs [**`Archcraft WSE`**](https://ko-fi.com/s/213becbf00) e [**`Archcraft Prime`**](https://ko-fi.com/s/c925a2a8c1) .
 
 :::
 
-<!-- Configuration -------------------------------- -->
+<!-- Configuração -------------------------------- -->
 
-## Configuration
+## Configuração
 
-River is pre-configured in Archcraft. In this section, We'll see how the River wayland compositor is configured, what tools and utilities are used to make it look and work like a complete desktop environment.
+River é pré-configurado no Archcraft. Nesta seção, nós veremos como o compositor wayland River é configurado, quais ferramentas e utilidades são usadas para fazê-lo funcionar como um ambiente gráfico completo.
 
-### Config Structure
+### Estrutura de Configuração
 
-The configuration structure of River in Archcraft looks something like this:
+A estrutura de configuração do River no Archcraft parece com isso:
 
 ```
 ~/.config
-└── river             : river config directory
-    ├── alacritty     : alacritty terminal config
-    ├── foot          : foot terminal config
-    ├── mako          : notification daemon config
-    │   └── icons     : notification icons
-    ├── rofi          : rofi config files
-    ├── scripts       : various scripts for functionality
-    ├── theme         : current theme and pywal themes
-    ├── wallpapers    : wallpapers
-    ├── waybar        : statusbar config
-    ├── wofi          : launcher, Powermenu config
-    └── init          : river init file (main config)
+└── river             : diretório de config do river
+    ├── alacritty     : config do terminal alacritty
+    ├── foot          : config do terminal foot
+    ├── mako          : config do daemon de notificação
+    │   └── icons     : ícones de notificação
+    ├── rofi          : arquivos de config do rofi
+    ├── scripts       : vários scriptd para funcionalidade
+    ├── theme         : tema atual e tema do pywall
+    ├── wallpapers    : Papéis de parede
+    ├── waybar        : config da status bar
+    ├── wofi          : lançador e menu de energia
+    └── init          : aquivo de inicialização do river.  (config principal)
 ```
 
 ### Terminal
 
 <Tabs>
 
-<TabItem value="wc_1" label="Default" default>
+<TabItem value="wc_1" label="Padrão" default>
 
-**Alacritty** is the default terminal. In the River wayland compositor, alacritty is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/river/alacritty` directory. These are the following config files you can modify to change the behaviour of your alacritty terminal:
+**Alacritty** é o terminal padrão, no compositor wayland RIver, alacritty é lançado com um arquivo de config alternativo. Se você precisa mudar algo, tenha certeza de editar o arquivo  de config em `~/.config/river/alacritty`. Aqui estão os seguintes arquivos de config que você pode modificar para alterar o comportamento do seu terminal alacritty:
 
-**`~/.config/river/alacritty/alacritty.toml`** : Main configuration file <br/>
-**`~/.config/river/alacritty/colors.toml`** : Colors configurations <br/>
-**`~/.config/river/alacritty/fonts.toml`** : Fonts configurations
+**`~/.config/river/alacritty/alacritty.toml`** : Arquivo de configuração principal <br/>
+**`~/.config/river/alacritty/colors.toml`** : Configurações de cor <br/>
+**`~/.config/river/alacritty/fonts.toml`** : Configurações de fontes
 
-> If you need any help with alacritty config, run : `man 5 alacritty` in terminal.
+> Se você precisa de alguma ajuda com a config do alacritty, execute `man 5 alacritty` no terminal.
 
 </TabItem>
 
-<TabItem value="wc_2" label="Alternate" default>
+<TabItem value="wc_2" label="Alternativa" default>
 
-**Foot** is the secondary/alternate terminal. In the River wayland compositor, foot is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/river/foot` directory. These are the following config files you can modify to change the behaviour of your foot terminal:
+**Foot** é o terminal secundário/alternativo. No compositor wayland River, foot é lançado com um arquivo de configurações alternativo. Se você quer mudar algo, tenha certeza de editar o arquivo de config em `~/.config/river/foot`. Aqui estão os seguintes arquivos que você pode modificar para mudar o comportamento do seu terminal foot:
 
-**`~/.config/river/foot/foot.ini`** : Main configuration file <br/>
-**`~/.config/river/foot/colors.ini`** : Colors configurations <br/>
-**`~/.config/river/foot/fonts.ini`** : Fonts configurations
+**`~/.config/river/foot/foot.ini`** : Arquivo de configuração principal <br/>
+**`~/.config/river/foot/colors.ini`** : Configurações de cor <br/>
+**`~/.config/river/foot/fonts.ini`** : Configurações de fonte
 
-> If you need any help with foot config, run : `man foot.ini` in terminal.
+> Se você precisa de alguma ajuda com a config do foot, execute: `man foot.ini` no terminal.
 
 </TabItem>
 
@@ -143,107 +143,107 @@ The configuration structure of River in Archcraft looks something like this:
 
 :::tip
 
-By Default, alacritty is used But, If you want to use foot as your default terminal, just edit the `~/.config/river/init` file and comment the keybindings for **`Terminal : alacritty`** and uncomment the bindings for **`Terminal : foot`**
+Por padrão, alacritty é usado, mas, se você quiser usar o foot como terminal padrão, basta editar o arquivo `~/.config/river/init` e comantar os atalhos para o **`terminal : alacritty`** e descomentar os atalhos para o **`terminal : foot`** 
 
 :::
 
 :::warning
 
-When you change the `theme`, the **colors.toml** file of alacritty and **colors.ini** file of foot get overwritten by the theme script.
+Quando você mudar `tema`, o arquivo **color.toml** do alacritty e o arquivo **colors.ini** do foot serão sobreescritos pelo script de tema.
 
 :::
 
-### Notification
+### Notificação
 
-**Mako** is used as a notification daemon for notifications in River. In the River wayland compositor, mako is launched with an alternative config file, which is `~/.config/river/mako/config`. So, If you need to modify anything, make sure you edit this file.
+**Mako** é usado como daemon para notificações no River. No compositor wayland River, mako é lançado com um arquivo de configuração alternativo, encontrado em `~/.config/river/mako/config`. Então, se você precisa modificar algo, tenha certeza de ditar esse arquivo.
 
-> If you need any help with mako config, run : `man 5 mako` in terminal.
+> Se você precisa de ajuda com a config do mako, execute: `man 5 mako` no terminal.
 
 :::warning
 
-When you change the `theme`, the colors in **config** file get overwritten by the theme script.
+Quando você muda o `tema`, o arquivo colors em **config** é sobreescrito pelo script de tema.
 
 :::
 
 ### Wallpaper
 
-**swaybg** sets the wallpaper in the River. If you want to change the wallpaper, Edit `~/.config/river/scripts/wallpaper` script and add your wallpaper here :
+**swaybg** define o papel de parede no River. Se você quer mudar o papel de parede, edite o script `~/.config/river/scripts/wallpaper` e adicione o seu papel de parede aqui:
 ```bash
 WALLPAPER='/path/to/your/wallpaper'
 ```
 :::warning
 
-When you change the `theme`, the wallpaper path in `wallpaper` script get overwritten by the theme script.
+Quando você muda o `tema`, o caminho do papel de parede no script `wallpaper` é sobreescrito pelo script de tema.
 
 :::
 
-### Statusbar
+### Barra de Status
 
-**Waybar** is used as the statusbar in Archcraft's River wayland compositor.
+**waybar** é usada como barra de status no compositor wayland Riover do Archcraft.
 
-The configurations for waybar can be found inside `~/.config/river/waybar`. If you want to modify the **waybar** settings, or perhaps want to add/remove modules, then you need to edit the following files :
+As configurações para a waybar podem ser encontradars dentro de `~/.config/river/waybar`. Se você quer modificar as configs da **waybar**, ou talvez add/remove modules, então você precisa editaros seguintes arquivos:
 
-**`~/.config/river/waybar/config`** : Main config file <br/>
-**`~/.config/river/waybar/modules`** : Modules config file <br/>
-**`~/.config/river/waybar/style.css`** : CSS file for styling <br/>
-**`~/.config/river/waybar/colors.css`** : CSS colors file <br/>
+**`~/.config/river/waybar/config`** : Arquivo de config principal <br/>
+**`~/.config/river/waybar/modules`** : arquivos de configuração dos móduloesModules <br/>
+**`~/.config/river/waybar/style.css`** : arquivo CSS para estilo <br/>
+**`~/.config/river/waybar/colors.css`** : Arquivo de cores em CSS <br/>
 
-> If you need any help with waybar config, run : `man waybar`
+> Se você precisa de ajuda com a config do waybar, execute `man waybar`
 
 :::warning
 
-When you change the `theme`, the **colors.css** file of waybar get overwritten by the theme script.
+Quando você muda o `tema`, o arquivo **colors.css** da waybar é sobreescrito pelo script de tema.
 
 :::
 
-### Launchers and Applets
+### Lançadores e Applets
 
 <Tabs>
 
 <TabItem value="wc_1" label="Rofi" default>
 
-**Rofi** is used for application launchers, command runner and various applets. To modify the rofi config, edit `~/.config/rofi/config.rasi` file.
+**Rofi** é usado como lançador de aplicações, executor de comandos e vários applets. Para modificar a config do rofi, edite o arquivo `~/.config/rofi/config.rasi`.
 
-> If you need any help with rofi config, run : `man rofi` in terminal.
+> Se você precisa de alguma ajuda com a config do rofi, execute: `man rofi` no terminal.
 
-The scripts for rofi that are used in River can be found it `~/.config/river/scripts` directory. These are the following scripts that uses rofi to provide the launchers and applets in River :
+Os scripts que o rofi usa no River podem ser encontrados no diretório `~/.config/river/scripts`. Os seguintes scripts são usados pelo rofi para fornecer os lançadores e applets no River:
 
-**`rofi_bluetooth`** : bluetooth applet to quickly connect to BT devices <br/>
-**`rofi_launcher`** : an application launcher, cmd runner, file manager and task manager  <br/>
-**`rofi_music`** : music applet, that controls MPD with `mpc` <br/>
-**`rofi_network`** : network manager applet <br/>
-**`rofi_powermenu`** : power menu, with confirmation dialog <br/>
-**`rofi_runner`** : quickly lets you run a command <br/>
-**`rofi_screenshot`** : screenshot applet that works with grim <br/>
+**`rofi_bluetooth`** : applet de bluetooth para conexão rápida com dispositivos BT <br/>
+**`rofi_launcher`** : um lançador de aplicativos, executor de comandos, gerenciador de arquivos e tarefas  <br/>
+**`rofi_music`** : applets de música, que controla o MPD com `mpc` <br/>
+**`rofi_network`** : applet de gerenciados de conexão <br/>
+**`rofi_powermenu`** : menu de energia, com diálogo de confirmação <br/>
+**`rofi_runner`** : te permite executar um comando rápido <br/>
+**`rofi_screenshot`** : applet de captura de tela que trabalha com grim <br/>
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts.
+Se você quiser modificar qualquer applet ou talvez queira extender suas funcionalidades, basta editar esses scripts.
 
-The configuration of each script can be found inside `~/.config/river/rofi` directory.
+A configuração de cada script pode ser encontrada em `~/.config/river/rofi`.
 
-Let's say that you want to modify the looks of **launcher**, then you need to edit the `~/.config/river/rofi/launcher.rasi` file. Same goes for every other applet, Edit the respective file in the same directory.
+Vamos dizer que você quer modificar a aparência do **lançador**, entâo você precisa editar o arquivo `~/.config/river/rofi/laucher.rasi`. O mesmo ocorre para todos os outros applets, edite seu respectivo arquivo no mesmo diretório.
 
-> If you need any help with rofi theming, run : `man rofi-theme` in terminal.
+> Se você precisa de alguma ajuda com o tema do rofi, excecute: `man rofi-theme` no terminal.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/river/rofi/shared/colors.rasi` and `~/.config/river/rofi/shared/fonts.rasi` files.
+Para mudar as cores e fontes do lançador e applets, edite os arquivos `~/.config/river/rofi/shared/colors.rasi` e `~/.config/river/rofi/shared/fonts.rasi`.
 
 </TabItem>
 
 <TabItem value="wc_2" label="Wofi" default>
 
-Alternatively, **Wofi** is used for application launcher and powermenu.
+Alternativamente, **Wofi** é usado para lançar aplicativos e menu de energia.
 
-> If you need any help with wofi config, run : `man 5 wofi` in terminal.
+> Se você precisa de alguma ajuda com a config do wofi, execiute: `man 5 wofi` no terminal.
 
-The scripts for wofi that are used in River can be found it `~/.config/river/scripts` directory. These are the following scripts that uses wofi to provide the launchers and powermenu applets in River :
+Os scripts que o wofi usa no River podem ser encontrados no diretório `~/.config/river/scripts`. Os seguintes scripts são usados pelo wofi para fornecer os lançadores e applets no River.
 
-**`wofi_menu`** : application launcher  <br/>
-**`wofi_powermenu`** : power menu, with confirmation dialog
+**`wofi_menu`** : lançador de aplicativos  <br/>
+**`wofi_powermenu`** : menu de energia, com diálogo de confirmação
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts.
+Se você quiser modificar qualquer applet ou talvez extender sua funcionalidade, basta editar esses scripts.
 
-The configuration of wofi can be found inside `~/.config/river/wofi` directory.
+A configuração do wofi pode ser encontrada dentro do diretório `~/.config/river/wofi`.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/river/wofi/style.css` and `~/.config/river/wofi/power.css` files.
+Para mudar as cores e fontes do lançador e applets, edite os arquivos `~/.config/river/wofi/style.css` e `~/.config/river/wofi/power.css`.
 
 </TabItem>
 
@@ -251,134 +251,135 @@ To change the colors and fonts of the launchers and applets, Edit the `~/.config
 
 :::tip
 
-By default, rofi is used as app launcher. But, If you want to use wofi instead of rofi, Edit the config file `~/.config/river/init` and uncomment wofi keybindings (and, comment the rofi bindings).
+Por padrão, rofi é usado como lançador de apps. Mas, se você quiser usar o wofi em vez do rofi, edite o arquivo de config `~/.config/river/init` e descolmente os atalhos do wofi (e comente os atalhos do rofi).
 
 :::
 
 :::warning
 
-When you change the `theme`, the **shared/colors.rasi** file of rofi and **style.css**, **power.css** files of wofi gets overwritten by the theme script.
+Quando você muda o `tema`, o arquivo **shared/colors.rasi** do rofi e o **style.css**, **power.css** do wofi são sobreescritos pelo script de tema
 
 :::
 
-### wayland compositor
+### compositor wayland
 
-The main configuration file of River is `~/.config/river/init`. Edit this file for everything, from startup programs to input/output config to keybindings, etc.
+O arquivo de configuração principal do River é `~/.config/river/init`, edite esse arquivo para tudo, desde programas que iniciam com o sistema a config de entrada/saída de atalhos de teclado, etc.
 
-> If you need any help with river configuration, visit : [River Wiki](https://github.com/riverwm/river/wiki)
+> Se você precisa de alguma ajuda com a configuração do River, visite: [River Wiki](https://github.com/riverwm/river/wiki)
 
 :::warning
 
-When you change the `theme`, colors in **init** file gets overwritten by the theme script.
+Quando você muda o `tema`, cores nos arquivos **init** são sobreescritaspelo script de tema.
 
 :::
 
-<!-- Keybindings ---------------------------------- -->
+<!-- Atalhos de Teclado ---------------------------------- -->
 
-## Keybindings
+## Atalhos de Teclado
 
-Here's a list of some important keybinds you need to know for operating River easily. If you want to view, modify or add new keybinds, Edit `~/.config/river/init` file.
+Aqui está uma lista dos atalhos mais importantes que você precisa saber para operar facilmente o River. Se você quiser ver, modificar ou adicionar novos atalhos, edite o arquivo `~/.config/river/init`.
 
-### Applications
+### Aplicativos
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + Return</kbd> | Open terminal |
-| <kbd>super + shift + Return</kbd> | Open floating terminal |
-| <kbd>super + alt + Return</kbd> | Open fullscreen terminal |
-| <kbd>super + shift + F</kbd> | Open file manager (thunar) |
-| <kbd>super + shift + E</kbd> | Open text editor (geany) |
-| <kbd>super + shift + W</kbd> | Open web browser (firefox) |
+| <kbd>super + Enter</kbd> | Abre o terminal |
+| <kbd>super + shift + Enter</kbd> | Abre o terminal flutuante |
+| <kbd>super + alt + Enter</kbd> | Abre o terminal em tela cheia |
+| <kbd>super + shift + F</kbd> | Abre o gestor de arquivos (thunar) |
+| <kbd>super + shift + E</kbd> | Abre o editor de texto (geany) |
+| <kbd>super + shift + W</kbd> | Abre o navegador (firefox) |
 
-### Menu and Applets
+### Menu e Applets
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + D</kbd> | Open application launcher |
-| <kbd>super + R</kbd> | Open command runner |
-| <kbd>super + N</kbd> | Open network manager applet |
-| <kbd>super + M</kbd> | Open music applet |
-| <kbd>super + X</kbd> | Open powermenu applet |
-| <kbd>super + S</kbd> | Open screenshots applet |
-| <kbd>super + B</kbd> | Open bluetooth applet |
+| <kbd>super + D</kbd> | Abre o lançador de aplicativos |
+| <kbd>super + R</kbd> | Abre o executor de comandos |
+| <kbd>super + N</kbd> | Abre o applet de gerenciamento de conexão |
+| <kbd>super + M</kbd> | Abre o applet de musica |
+| <kbd>super + X</kbd> | Abre o applet de menu de energia |
+| <kbd>super + S</kbd> | Abre o applet de captura de tela |
+| <kbd>super + B</kbd> | Abre o applet de bluetooth |
 
-### Hardware Keys
+### Atalhos de Hardware
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>Print</kbd> | Take screenshot |
-| <kbd>alt + Print</kbd> | Take screenshot in 5 seconds delay |
-| <kbd>shift + Print</kbd> | Take screenshot in 10 seconds delay |
-| <kbd>super + Print</kbd> | Take screenshot of selected area |
-| <kbd>XF86AudioRaiseVolume</kbd> | Increase volume |
-| <kbd>XF86AudioLowerVolume</kbd> | Decrease volume |
-| <kbd>XF86AudioMute</kbd> | Toggle mute speakers |
-| <kbd>XF86AudioMicMute</kbd> | Toggle mute microphone |
-| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Media controls (MPD) |
-| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
-| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>Print</kbd> | Tira um screenshot |
+| <kbd>alt + Print</kbd> | Tira um screenshot com 5 segundos de espera |
+| <kbd>shift + Print</kbd> | Tira um screenshot com 10 segundos de espera |
+| <kbd>super + Print</kbd> | Tira um screenshot da área selecionada |
+| <kbd>XF86AudioRaiseVolume</kbd> | Aumanta o volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Diminui o volume |
+| <kbd>XF86AudioMute</kbd> | Alterna o mudo dos autofalantes |
+| <kbd>XF86AudioMicMute</kbd> | Alterna o mudo do microfone |
+| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Controle de mídia (MPD) |
+| <kbd>XF86MonBrightnessUp</kbd> | Aumenta o brilho da tela |
+| <kbd>XF86MonBrightnessDown</kbd> | Diminui o brilho da tela |
 
-### Workspaces
-| Keys | Action |
+### Áreas de Trabalho
+
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + 1..9</kbd> | Focus tag 0 to 8 |
-| <kbd>super + shift + 1..9</kbd> | Tag focused view with tag 0 to 8 |
-| <kbd>super + ctrl + 1..9</kbd> | Toggle focus of tag 0 to 8 |
-| <kbd>super + alt + 1..9</kbd> | Toggle tag 0 to 8 of focused view |
+| <kbd>super + 1..9</kbd> | Foca na tag 0 a 8 |
+| <kbd>super + shift + 1..9</kbd> | Transefere a tag em foco para a tag 0 a 8 |
+| <kbd>super + ctrl + 1..9</kbd> | Alterna o foco da tag 0 a 8 |
+| <kbd>super + alt + 1..9</kbd> | Alterna a tag 0 a 8 com a vista em foco |
 
-### Window Management
+### Gerenciamento de Janela
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + C/Q</kbd> | Close focued window |
-| <kbd>super + Left/Right</kbd> | Focus next/previous view in the layout stack |
-| <kbd>super + shift + Left/Right</kbd> | Swap focused view with the next/previous view in the layout stack |
-| <kbd>super + J/K</kbd> | Focus next/previous output |
-| <kbd>super + shift + J/K</kbd> | Send the focused view to next/previous output |
-| <kbd>super + E</kbd> | Bump the focused view to the top of the layout stack |
-| <kbd>super + H/L</kbd> | Decrease/Increase the main_factor value of rivertile by 0.02 |
-| <kbd>super + shift + H/L</kbd> | Increment/Decrement the main_count value of rivertile |
-| <kbd>ctrl + alt + Left/Down/Up/Right</kbd> | Change layout orientation |
-| <kbd>super + alt + Left/Down/Up/Right</kbd> | Move floating views |
-| <kbd>super + ctrl + Left/Down/Up/Right</kbd> | Resize views |
-| <kbd>super + alt + ctrl + H/J/K/L</kbd> | Snap views to screen edges |
-| <kbd>super + Space</kbd> | Toggle float |
-| <kbd>super + F</kbd> | Toggle fullscreen |
+| <kbd>super + C/Q</kbd> | Fecha a janela em foco |
+| <kbd>super + Left/Right</kbd> | Foca a próxima/anterior vista no layout empilhado |
+| <kbd>super + shift + Left/Right</kbd> | Troca a vista em foco com a próxima/anterior vista no layout empilhado |
+| <kbd>super + J/K</kbd> | Foca a próxima/anterio saída |
+| <kbd>super + shift + J/K</kbd> | Envia a visa em foco para a próxima/anterior saída |
+| <kbd>super + E</kbd> | Ressalta a vista em foco para o topo no layout empilhado |
+| <kbd>super + H/L</kbd> | Diminui/Aumenta o valor do fator principal do ladrilho do River em 0.02 |
+| <kbd>super + shift + H/L</kbd> | Incrementa/Decrementa o valor da contagem principal do ladrilho do River |
+| <kbd>ctrl + alt + Left/Down/Up/Right</kbd> | Muda a orientação do layout |
+| <kbd>super + alt + Left/Down/Up/Right</kbd> | Move as vistas flutuantes |
+| <kbd>super + ctrl + Left/Down/Up/Right</kbd> | Redimensiona as vistas |
+| <kbd>super + alt + ctrl + H/J/K/L</kbd> | Gruda as vistas nas bordas da tela |
+| <kbd>super + Space</kbd> | Alterna o modo flutuante |
+| <kbd>super + F</kbd> | Alterna o modo tela cheia |
 
-### Misc Keys
+### Atalhos Variados
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + P</kbd> | Run colorpicker  |
-| <kbd>ctrl + alt + L</kbd> | Trigger lockscreen |
-| <kbd>ctrl + alt + Space</kbd> | Dismiss notifications |
-| <kbd>ctrl + alt + Delete</kbd> | Quit River |
+| <kbd>super + P</kbd> | Executa o seletor de cor  |
+| <kbd>ctrl + alt + L</kbd> | Aciona o bloqueio de tela |
+| <kbd>ctrl + alt + Space</kbd> | Dispensa notoficações |
+| <kbd>ctrl + alt + Delete</kbd> | Sai do River |
 
 <!-- Nvidia --------------------------------------- -->
 
 ## Nvidia
 
-If you're on `Archcraft` and install the provided package, There's nothing else you need to do in order to run it on Nvidia machine. When you install Archcraft on a machine that has Nvidia, It does all the operations (mentioned below) required to run a wayland compositor on such machines. The compositor should work fine.
+Se você está usando `Archcraft` e instalou os pacotes providos, não há mais nada que você tenha que fazer para rodar em uma máquina Nvidia. Quando você instala o Archcraft em máquina com Nvidia, ele faz todas as operações (mencionadas abaixo) requeridas para rodar o compositor wayland em sua máquina. O compositor deverá funcionar bem.
 
-If you're running any other distribution and want to install this setup on your Nvidia machine, You need to do some tweaking. In this guide, I'm assuing you're using **Arch Linux**. Follow the steps below to make this wayland compositor work on Nvidia :
+Se você está rodando alguma outra distribuição e quer instalar na sua máquina com Nvidia, você precisa fazer alguns ajuses. Nesse guia, estarei assumindo que você está usando **Arch Linux**. Siga os passos abaixo para fazer este compositor wayland funcionar com Nvidia:
 
-- Install **Nvidia Drivers** on your system. [NVIDIA](https://wiki.archlinux.org/title/NVIDIA) 
-- Edit `/etc/mkinitcpio.conf` file and add **`nvidia`** kernel modules
+- Instale **Nvidia Dnewms** no seu sistema. [NVIDIA](https://wiki.archlinux.org/title/NVIDIA) 
+- Edite o arquivo `/etc/mkinitcpio.conf` e adicione os módulos de kernel**`nvidia`** 
 ```
 MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 ```
 
-- In the same file, Remove `kms` hook from hooks array if present.
-- Rebuild your initrd file with : `sudo mkinitcpio -P linux`
-- Edit `/etc/default/grub` file and add **`nvidia_drm.modeset=1`** kernel parameter for Nvidia
+- No mesmo arquivo, remova o hook `kms` da variável de hooks se tiver
+- Reconstrua o seu arquivo initrd com: `sudo mkinitcpio -P linux`
+- Edite o arquivo `/etc/default/grub` e adicione o parâmetro **`nvidia_drm.modeset=1`** do kernel para Nvidia
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nvidia_drm.modeset=1 ..."
 ```
 
-- Update your grub config file with : `sudo grub-mkconfig -o /boot/grub/grub.cfg`
-- Reboot your Nvidia Machine and login to your wayland compositor, It should work now.
+- Atualize sua configuração do grub com: `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+- Reinicie sua máquina Nvidia e faça login no seu compositor wayland, isso deve funcionar agora.
 
-More Information: [NVIDIA#Installation](https://wiki.archlinux.org/title/NVIDIA#Installation), [NVIDIA#DRM_kernel_mode_setting](https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting)
+Mais informações: [NVIDIA#Installation](https://wiki.archlinux.org/title/NVIDIA#Installation), [NVIDIA#DRM_kernel_mode_setting](https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting)
 
 <!-- Themes --------------------------------------- -->
 
@@ -386,7 +387,7 @@ More Information: [NVIDIA#Installation](https://wiki.archlinux.org/title/NVIDIA#
 
 ### Desktop
 
-Here's few screenshots of `River` desktop. These'll give you an idea of the experience of River in Archcraft. 
+Aqui estão algumas capturas de tela do `River`. Elas te darão uma ideia da experiência do River no Archcarft.
 
 |Desktop 1|Desktop 2|Desktop 3|Desktop 4|
 |---|---|---|---|
@@ -404,23 +405,23 @@ Here's few screenshots of `River` desktop. These'll give you an idea of the expe
 |---|---|
 |![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/river/desktop/desktop_13.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/river/desktop/desktop_14.png)|
 
-### Themes
+### Temas
 
-To Change the theme, Click on `Color Palette` icon on waybar. To apply a random theme, **`Left Click`** on the theme module and To restore the default theme, **`Right Click`** on the theme module.
+Para mudar o tema, clique no ícone de `Paleta de Cores` na waybar. Para aplicar um tema aleatório, **`Clique Esquerdo`** no módulo de tema e para restaurar o tema padrão, **`Clique Direito`** no módulo de tema.
 
 <Tabs>
 
-<TabItem value="wc_1" label="Default Theme" default>
+<TabItem value="wc_1" label="Tma Padrão" default>
 
-There's only one theme available for River.
+Só há um tema disponível para o River.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/river/main.png)
 
 </TabItem>
 
-<TabItem value="wc_2" label="Random Themes" default>
+<TabItem value="wc_2" label="Temas Aleatórios" default>
 
-Auto Generated themes with `pywal`.
+Temas auto gerados com `pywal`.
 
 ![gif](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/river/random/random.gif)
 
@@ -433,23 +434,23 @@ Auto Generated themes with `pywal`.
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar as minhas configurações para as novas?</b></summary>
 
-Download the updated package from ko-fi (for free) and just install it to update to new configs.
+Baixe o pacote atualizado em ko-fi (de graça) e apenas instale-o para atualizar para as novas configurações.
 
-#### Steps to get updates (or re-download files):
-- Login to you Ko-fi account
-- Go to your `Ko-fi Payments History`
-- Select the purchases you've made
-- Click on `View Details`
-- Then, Click on `View Content` to download the updated files.
+#### Passos para pegar as atualizações (ou baixar os arquivos novamente):
+- Faça login na sua conta do Ko-fi
+- Vá para o seu `Histórico e Pagamentos Ko-fi`
+- Selecione as compras que você fez
+- Clique em `Ver Detalhes`
+- Depois, clique em `Ver Conteúdo` para baixar os arquivos atualizados.
 
 </details>
 
 <details>
-<summary><b>Why my cursor is not visible?</b></summary>
+<summary><b>Por que meu cursor não está visível?</b></summary>
 
-When using certain graphics drivers (e.g. the VMSVGA graphics controller or the proprietary NVIDIA driver), the cursor is invisible. This can be fixed by using software cursors :
+Quando usamos certos drivers gráficos (ex: o controlador gráfico VMSVGA ou o driver proprietário da Nvidia), o cursor fica invisível. Isso pode ser consertado usando um software de cursor:
 ```bash
 $ export WLR_NO_HARDWARE_CURSORS=1
 ```
@@ -457,9 +458,9 @@ $ export WLR_NO_HARDWARE_CURSORS=1
 </details>
 
 <details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
+<summary><b>Como mudar o tema GTK, ícones e cursor?</b></summary>
 
-To change GTK theme, icons and cursor in River session, Edit `~/.config/river/init` file and restart River to apply the changes.
+Para mudar o tema GTK, ícones e cursor na sessão do River, edite o arquivo `~/.config/river/init` e reinicie o RIver para aplicar as mudanças.
 ```lua
 local gsettings = {
   ['org.gnome.desktop.interface'] = {
@@ -475,12 +476,12 @@ local gsettings = {
 </details>
 
 <details>
-<summary><b>How to manage multiple monitors and resolution in River?</b></summary>
+<summary><b>Como gerenciar múltiplos monitores e resolução no River?</b></summary>
 
-If you use multiple monitors with River wayland compositor, you can manage them as follow:
+Se você usa múltiplos monitores com o compositor wayland River, você pode gerenciá-los como a seguir:
 
-1. You can get the names of your outputs with `wlr-randr`
-2. Edit `~/.config/river/init` file and use the information you get by the command above:
+1. Você pode pegar os nomes das suas saídas com `wlr-randr`
+2. Edite o arquivo `~/.config/river/init` e use a informação qu você pegou com o comando acima:
 ```lua
 local outputs = {
 -- Laptop screen, mode: 1920x1080, scale: 1
@@ -505,11 +506,11 @@ local outputs = {
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Desde quando o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares. Você pode fazê-lo funcionar nestes computadores com os seguintes métodos:
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+1. Abra o alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite o atalho/script que lança o alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+2. Edite o arquivo **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
 
 </details>
