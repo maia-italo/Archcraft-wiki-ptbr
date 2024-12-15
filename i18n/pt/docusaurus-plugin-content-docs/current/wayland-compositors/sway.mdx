@@ -23,57 +23,56 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-Sway is a tiling Wayland compositor and a drop-in replacement for the i3 window manager for X11. It works with your existing i3 configuration and supports most of i3's features, plus a few extras.
+O Sway é um compositor tiling para Wayland e um substituto direto para o gerenciador de janelas i3 no X11. Ele funciona com sua configuração atual do i3 e suporta a maioria dos recursos do i3, além de alguns extras.
 
 [![video](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/main.png)](https://youtu.be/ASlQcf8Jc0I)
 
 :::tip[Archcraft Sway]
 
-Get Sway From [**`ko-fi`**](https://ko-fi.com/s/10f2e87af3) And Support Archcraft Development.
+Obtenha o Sway no [**`ko-fi`**](https://ko-fi.com/s/10f2e87af3) e apoie o desenvolvimento do Archcraft.
 
 :::
 
-<!-- Installation --------------------------------- -->
+<!-- Instalação--------------------------------- -->
 
-## Installation
+## Instalação
 
-Follow the instructions below to install Sway :
+Siga as instruções abaixo para instalar o Sway:
 
-- Download **sway.tar.gz** file from [ko-fi](https://ko-fi.com/s/10f2e87af3), and save it in a directory.
-- Open a terminal in same directory and run the following command to extract the tar file :
+- Baixe o arquivo **sway.tar.gz** no [ko-fi](https://ko-fi.com/s/10f2e87af3) e salve-o em um diretório.  
+- Abra um terminal no mesmo diretório e execute o comando abaixo para extrair o arquivo tar:  
 ```bash
 $ tar -xzvf sway_YYYY-MM-DD.tar.gz
-```
-- Once the file is extracted, change to the extracted directory which should be **`sway`**
+```  
+- Após a extração, acesse o diretório extraído, que deve ser **`sway`**.
 
 <Tabs>
 
-<TabItem value="wc_1" label="Install On Archcraft" default>
+<TabItem value="wc_1" label="Instalar no Archcraft" default>
 
-On Archcraft, You can simply install the provided package in **pkg** directory with :
+No Archcraft, você pode simplesmente instalar o pacote fornecido no diretório **pkg** com o comando:  
 ```bash
 $ sudo pacman -U archcraft-sway-X.Y-Z-any.pkg.tar.zst
-```
-
+```  
 </TabItem>
 
-<TabItem value="wc_2" label="Install On Other Distributions" default>
+<TabItem value="wc_2" label="Instalar em Outras Distribuições" default>
 
-If you want to install this setup on Arch Linux or on any other distro, follow the points below : 
-- Install the following programs on your Linux distro: `sway` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi`  `kanshi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `wlogout` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland` `xdg-desktop-portal-wlr` `playerctl` `pastel` `python-pywal` `alacritty` `rofi` `pulsemixer`
-- After installing programs above, Create sway directory in **`~/.config`**
+Se você deseja instalar esta configuração no Arch Linux ou em qualquer outra distribuição, siga os passos abaixo:  
+- Instale os seguintes programas em sua distribuição Linux: `sway` `swaybg` `swayidle` `swaylock` `wlroots` `wl-clipboard` `waybar` `wofi` `kanshi` `foot` `mako` `grim` `slurp` `wf-recorder` `light` `yad` `wlogout` `thunar` `geany` `mpv` `mpd` `mpc` `viewnior` `imagemagick` `xfce-polkit` `xorg-xwayland` `xdg-desktop-portal-wlr` `playerctl` `pastel` `python-pywal` `alacritty` `rofi` `pulsemixer`  
+- Após instalar os programas acima, crie o diretório sway em **`~/.config`**  
 ```bash
 $ mkdir -p ~/.config/sway
 ```
-- Copy Everything from _dotfiles_ to **`~/.config/sway`** 
+- Copie tudo de _dotfiles_ para **`~/.config/sway`**  
 ```bash
 $ cp -r ./dotfiles/* ~/.config/sway/
 ```
-- Logout and login to your amazingly configured Sway WC.
+- Saia e faça login novamente no seu Sway WC maravilhosamente configurado.
 
-> Install the **fonts** from `fonts` and **GTK theme, icons and cursor** from `gtk` directory for overall appearance.
+> Instale as **fontes** do diretório `fonts` e o **tema GTK, ícones e cursor** do diretório `gtk` para um visual geral aprimorado.
 
 </TabItem>
 
@@ -81,68 +80,68 @@ $ cp -r ./dotfiles/* ~/.config/sway/
 
 :::info[Archcraft Prime]
 
-<Highlight color="#62aeef">Sway</Highlight> comes pre-installed on [**`Archcraft WSE`**](https://ko-fi.com/s/213becbf00) and [**`Archcraft Prime`**](https://ko-fi.com/s/c925a2a8c1) ISOs.
+<Highlight color="#62aeef">Sway</Highlight> já vem pré-instalado nas ISOs do [**`Archcraft WSE`**](https://ko-fi.com/s/213becbf00) e [**`Archcraft Prime`**](https://ko-fi.com/s/c925a2a8c1).
 
 :::
 
-<!-- Configuration -------------------------------- -->
+<!-- Configuração -------------------------------- -->
 
-## Configuration
+## Configuração
 
-Sway is pre-configured in Archcraft. In this section, We'll see how the Sway wayland compositor is configured, what tools and utilities are used to make it look and work like a complete desktop environment.
+O Sway já vem pré-configurado no Archcraft. Nesta seção, veremos como o compositor Wayland Sway é configurado, quais ferramentas e utilitários são usados para fazer com que ele se pareça e funcione como um ambiente de desktop completo.
 
-### Config Structure
+### Estrutura de Configuração
 
-The configuration structure of Sway in Archcraft looks something like this:
+A estrutura de configuração do Sway no Archcraft se parece com algo assim:
 
 ```
 ~/.config
-└── sway              : sway config directory
-    ├── alacritty     : alacritty terminal config
-    ├── foot          : foot terminal config
-    ├── mako          : notification daemon config
-    │   └── icons     : notification icons
-    ├── rofi          : rofi config files
-    ├── scripts       : various scripts for functionality
-    ├── theme         : current theme and pywal themes
-    ├── wallpapers    : wallpapers
-    ├── waybar        : statusbar config
-    ├── wlogout       : wlogout config
-    │   └── icons     : session icons
-    ├── wofi          : launcher config
-    ├── config        : main sway config
-    ├── sway-idle     : sway idle config
-    ├── sway-input    : sway input config
-    ├── sway-modes    : sway mode config
-    ├── sway-output   : sway output config
-    └── sway-theme    : sway theme config
+└── sway              : diretório de configuração do sway
+    ├── alacritty     : configuração do terminal alacritty
+    ├── foot          : configuração do terminal foot
+    ├── mako          : configuração do daemon de notificações
+    │   └── icons     : ícones de notificação
+    ├── rofi          : arquivos de configuração do rofi
+    ├── scripts       : diversos scripts para funcionalidades
+    ├── theme         : tema atual e temas do pywal
+    ├── wallpapers    : papéis de parede
+    ├── waybar        : configuração da barra de status
+    ├── wlogout       : configuração do wlogout
+    │   └── icons     : ícones da sessão
+    ├── wofi          : configuração do lançador wofi
+    ├── config        : configuração principal do sway
+    ├── sway-idle     : configuração do sway idle
+    ├── sway-input    : configuração de entrada do sway
+    ├── sway-modes    : configuração de modos do sway
+    ├── sway-output   : configuração de saída do sway
+    └── sway-theme    : configuração do tema do sway
 ```
 
 ### Terminal
 
 <Tabs>
 
-<TabItem value="wc_1" label="Default" default>
+<TabItem value="wc_1" label="Padrão" default>
 
-**Alacritty** is the default terminal. In the Sway wayland compositor, alacritty is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/sway/alacritty` directory. These are the following config files you can modify to change the behaviour of your alacritty terminal:
+**Alacritty** é o terminal padrão. No compositor Wayland Sway, o alacritty é iniciado com um arquivo de configuração alternativo. Se precisar alterar algo, certifique-se de modificar os arquivos de configuração no diretório `~/.config/sway/alacritty`. Estes são os arquivos de configuração que você pode modificar para alterar o comportamento do seu terminal alacritty:
 
-**`~/.config/sway/alacritty/alacritty.toml`** : Main configuration file <br/>
-**`~/.config/sway/alacritty/colors.toml`** : Colors configurations <br/>
-**`~/.config/sway/alacritty/fonts.toml`** : Fonts configurations
+**`~/.config/sway/alacritty/alacritty.toml`** : Arquivo de configuração principal <br/>
+**`~/.config/sway/alacritty/colors.toml`** : Configurações de cores <br/>
+**`~/.config/sway/alacritty/fonts.toml`** : Configurações de fontes
 
-> If you need any help with alacritty config, run : `man 5 alacritty` in terminal.
+> Se precisar de ajuda com a configuração do alacritty, execute: `man 5 alacritty` no terminal.
 
 </TabItem>
 
-<TabItem value="wc_2" label="Alternate" default>
+<TabItem value="wc_2" label="Alternativo" default>
 
-**Foot** is the secondary/alternate terminal. In the Sway wayland compositor, foot is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/sway/foot` directory. These are the following config files you can modify to change the behaviour of your foot terminal:
+**Foot** é o terminal secundário/alternativo. No compositor Wayland Sway, o foot é iniciado com um arquivo de configuração alternativo. Se precisar alterar algo, certifique-se de modificar os arquivos de configuração no diretório `~/.config/sway/foot`. Estes são os arquivos de configuração que você pode modificar para alterar o comportamento do seu terminal foot:
 
-**`~/.config/sway/foot/foot.ini`** : Main configuration file <br/>
-**`~/.config/sway/foot/colors.ini`** : Colors configurations <br/>
-**`~/.config/sway/foot/fonts.ini`** : Fonts configurations
+**`~/.config/sway/foot/foot.ini`** : Arquivo de configuração principal <br/>
+**`~/.config/sway/foot/colors.ini`** : Configurações de cores <br/>
+**`~/.config/sway/foot/fonts.ini`** : Configurações de fontes
 
-> If you need any help with foot config, run : `man foot.ini` in terminal.
+> Se precisar de ajuda com a configuração do foot, execute: `man foot.ini` no terminal.
 
 </TabItem>
 
@@ -150,120 +149,119 @@ The configuration structure of Sway in Archcraft looks something like this:
 
 :::tip
 
-By Default, alacritty is used But, If you want to use foot as your default terminal, just edit the `~/.config/sway/config` file and comment the keybindings for **`Terminal : alacritty`** and uncomment the bindings for **`Terminal : foot`**
-
+Por padrão, o **alacritty** é utilizado. Porém, se você quiser usar o **foot** como terminal padrão, basta editar o arquivo `~/.config/sway/config`, comentar as teclas de atalho para **`Terminal : alacritty`** e descomentar as teclas de atalho para **`Terminal : foot`**.
 :::
 
 :::warning
 
-When you change the `theme`, the **colors.toml** file of alacritty and **colors.ini** file of foot get overwritten by the theme script.
+Quando você alterar o **tema**, o arquivo **colors.toml** do alacritty e o arquivo **colors.ini** do foot serão sobrescritos pelo script de tema.
 
 :::
 
-### Notification
+### Notificações
 
-**Mako** is used as a notification daemon for notifications in Sway. In the Sway wayland compositor, mako is launched with an alternative config file, which is `~/.config/sway/mako/config`. So, If you need to modify anything, make sure you edit this file.
+**Mako** é usado como um daemon de notificações para o Sway. No compositor Wayland Sway, o Mako é iniciado com um arquivo de configuração alternativo, que é o `~/.config/sway/mako/config`. Portanto, se você precisar modificar algo, certifique-se de editar este arquivo.
 
-> If you need any help with mako config, run : `man 5 mako` in terminal.
+> Se precisar de ajuda com a configuração do Mako, execute: `man 5 mako` no terminal.
 
 :::warning
 
-When you change the `theme`, the colors in **config** file get overwritten by the theme script.
+Quando você altera o `tema`, as cores no arquivo **config** são sobrescritas pelo script de tema.
 
 :::
 
-### Wallpaper
+### Papel de Parede
 
-**swaybg** sets the wallpaper in the Sway. If you want to change the wallpaper, Edit `~/.config/sway/sway-output` file and add your wallpaper here :
+**swaybg** define o papel de parede no Sway. Se você quiser mudar o papel de parede, edite o arquivo `~/.config/sway/sway-output` e adicione o seu papel de parede lá:
 ```ini
-## Set wallpaper on all monitors
-output * bg /path/to/your/wallpaper fill
+## Definir papel de parede em todos os monitores
+output * bg /caminho/para/seu/papel-de-parede fill
 ```
 :::warning
 
-When you change the `theme`, the wallpaper path in `sway-output` file get overwritten by the theme script.
+Quando você altera o `tema`, o caminho do papel de parede no arquivo `sway-output` será sobrescrito pelo script de tema.
 
 :::
 
-### Statusbar
+### Barra de Status
 
-**Waybar** is used as the statusbar in Archcraft's Sway wayland compositor.
+**Waybar** é usado como a barra de status no compositor Wayland Sway do Archcraft.
 
-The configurations for waybar can be found inside `~/.config/sway/waybar`. If you want to modify the **waybar** settings, or perhaps want to add/remove modules, then you need to edit the following files :
+As configurações do waybar podem ser encontradas dentro de `~/.config/sway/waybar`. Se você quiser modificar as configurações do **waybar**, ou talvez adicionar/remover módulos, você precisará editar os seguintes arquivos:
 
-**`~/.config/sway/waybar/config`** : Main config file <br/>
-**`~/.config/sway/waybar/modules`** : Modules config file <br/>
-**`~/.config/sway/waybar/style.css`** : CSS file for styling <br/>
-**`~/.config/sway/waybar/colors.css`** : CSS colors file <br/>
+**`~/.config/sway/waybar/config`** : Arquivo de configuração principal <br/>
+**`~/.config/sway/waybar/modules`** : Arquivo de configuração dos módulos <br/>
+**`~/.config/sway/waybar/style.css`** : Arquivo CSS para estilização <br/>
+**`~/.config/sway/waybar/colors.css`** : Arquivo CSS de cores <br/>
 
-> If you need any help with waybar config, run : `man waybar`
+> Se precisar de ajuda com a configuração do waybar, execute: `man waybar`
 
 :::warning
 
-When you change the `theme`, the **colors.css** file of waybar get overwritten by the theme script.
+Quando você altera o `tema`, o arquivo **colors.css** do waybar será sobrescrito pelo script de tema.
 
 :::
 
-### Launchers and Applets
+### Lançadores e Applets
 
 <Tabs>
 
 <TabItem value="wc_1" label="Rofi" default>
 
-**Rofi** is used for application launchers, command runner and various applets. To modify the rofi config, edit `~/.config/rofi/config.rasi` file.
+**Rofi** é usado como lançador de aplicativos, executor de comandos e diversos applets. Para modificar a configuração do rofi, edite o arquivo `~/.config/rofi/config.rasi`.
 
-> If you need any help with rofi config, run : `man rofi` in terminal.
+> Se precisar de ajuda com a configuração do rofi, execute: `man rofi` no terminal.
 
-The scripts for rofi that are used in Sway can be found it `~/.config/sway/scripts` directory. These are the following scripts that uses rofi to provide the launchers and applets in Sway :
+Os scripts do rofi usados no Sway podem ser encontrados no diretório `~/.config/sway/scripts`. Esses são os seguintes scripts que utilizam o rofi para fornecer lançadores e applets no Sway:
 
-**`rofi_bluetooth`** : bluetooth applet to quickly connect to BT devices <br/>
-**`rofi_launcher`** : an application launcher, cmd runner, file manager and task manager  <br/>
-**`rofi_music`** : music applet, that controls MPD with `mpc` <br/>
-**`rofi_network`** : network manager applet <br/>
-**`rofi_powermenu`** : power menu, with confirmation dialog <br/>
-**`rofi_runner`** : quickly lets you run a command <br/>
-**`rofi_screenshot`** : screenshot applet that works with grim <br/>
+**`rofi_bluetooth`**: applet de Bluetooth para conectar rapidamente a dispositivos BT <br/>
+**`rofi_launcher`**: lançador de aplicativos, executor de comandos, gerenciador de arquivos e gerenciador de tarefas <br/>
+**`rofi_music`**: applet de música, que controla o MPD com `mpc` <br/>
+**`rofi_network`**: applet de gerenciador de rede <br/>
+**`rofi_powermenu`**: menu de energia, com caixa de confirmação <br/>
+**`rofi_runner`**: permite executar um comando rapidamente <br/>
+**`rofi_screenshot`**: applet de captura de tela que funciona com o grim <br/>
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts.
+Se você quiser modificar algum applet ou talvez estender a funcionalidade de algum, basta editar esses scripts.
 
-The configuration of each script can be found inside `~/.config/sway/rofi` directory.
+A configuração de cada script pode ser encontrada no diretório `~/.config/sway/rofi`.
 
-Let's say that you want to modify the looks of **launcher**, then you need to edit the `~/.config/sway/rofi/launcher.rasi` file. Same goes for every other applet, Edit the respective file in the same directory.
+Digamos que você queira modificar a aparência do **lançador**, então você precisará editar o arquivo `~/.config/sway/rofi/launcher.rasi`. O mesmo vale para cada outro applet, edite o respectivo arquivo no mesmo diretório.
 
-> If you need any help with rofi theming, run : `man rofi-theme` in terminal.
+> Se precisar de ajuda com o tema do rofi, execute: `man rofi-theme` no terminal.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/sway/rofi/shared/colors.rasi` and `~/.config/sway/rofi/shared/fonts.rasi` files.
+Para mudar as cores e fontes dos lançadores e applets, edite os arquivos `~/.config/sway/rofi/shared/colors.rasi` e `~/.config/sway/rofi/shared/fonts.rasi`.
 
 </TabItem>
 
 <TabItem value="wc_2" label="Wofi" default>
 
-Alternatively, **Wofi** is used for application launcher and powermenu.
+Alternativamente, **Wofi** é usado como lançador de aplicativos e menu de energia.
 
-> If you need any help with wofi config, run : `man 5 wofi` in terminal.
+> Se precisar de ajuda com a configuração do wofi, execute: `man 5 wofi` no terminal.
 
-The scripts for wofi that are used in Sway can be found it `~/.config/sway/scripts` directory. These are the following scripts that uses wofi to provide the launchers and powermenu applets in Sway :
+Os scripts do wofi usados no Sway podem ser encontrados no diretório `~/.config/sway/scripts`. Esses são os seguintes scripts que utilizam o wofi para fornecer os lançadores e o applet do menu de energia no Sway:
 
-**`wofi_menu`** : application launcher  <br/>
-**`wofi_powermenu`** : power menu, with confirmation dialog
+**`wofi_menu`**: lançador de aplicativos <br/>
+**`wofi_powermenu`**: menu de energia, com caixa de confirmação
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts.
+Se você quiser modificar algum applet ou talvez estender a funcionalidade de algum, basta editar esses scripts.
 
-The configuration of wofi can be found inside `~/.config/sway/wofi` directory.
+A configuração do wofi pode ser encontrada no diretório `~/.config/sway/wofi`.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/sway/wofi/style.css` file.
+Para mudar as cores e fontes dos lançadores e applets, edite o arquivo `~/.config/sway/wofi/style.css`.
 
 </TabItem>
 
 <TabItem value="wc_3" label="Wlogout" default>
 
-**Wlogout**, A Wayland logout menu is also configured for session management is Sway.
+**Wlogout**, um menu de logout do Wayland, também está configurado para gerenciamento de sessão no Sway.
 
-Edit `~/.config/sway/scripts/wlogout` script to adjust the looks of wlogout. The configuration of wlogout can be found inside `~/.config/sway/wlogout` directory.
+Edite o script `~/.config/sway/scripts/wlogout` para ajustar a aparência do wlogout. A configuração do wlogout pode ser encontrada no diretório `~/.config/sway/wlogout`.
 
-If you want to use wlogout instead of rofi and wofi, Edit the config file `~/.config/sway/config` and uncomment wlogout keybindings.
+Se você quiser usar o wlogout em vez de rofi e wofi, edite o arquivo de configuração `~/.config/sway/config` e descomente as keybindings do wlogout.
 
-> If you need any help with wlogout config, run : `man wlogout` in terminal.
+> Se precisar de ajuda com a configuração do wlogout, execute: `man wlogout` no terminal.
 
 </TabItem>
 
@@ -271,168 +269,168 @@ If you want to use wlogout instead of rofi and wofi, Edit the config file `~/.co
 
 :::tip
 
-By default, rofi is used as app launcher. But, If you want to use wofi instead of rofi, Edit the config file `~/.config/sway/config` and uncomment wofi keybindings (and, comment the rofi bindings).
+Por padrão, o rofi é usado como lançador de aplicativos. Mas, se você preferir usar o wofi em vez do rofi, edite o arquivo de configuração `~/.config/sway/config` e descomente as keybindings do wofi (e comente as keybindings do rofi).
 
 :::
 
 :::warning
 
-When you change the `theme`, the **shared/colors.rasi** file of rofi and **style.css** file of wofi and wlogout gets overwritten by the theme script.
+Quando você muda o `tema`, o arquivo **shared/colors.rasi** do rofi e os arquivos **style.css** do wofi e do wlogout são sobrescritos pelo script de tema.
 
 :::
 
-### wayland compositor
+### Compositor Wayland
 
-The configuration of Sway is available in `~/.config/sway`. To configure Sway wayland compositor, these are the files that are used :
+A configuração do Sway está disponível em `~/.config/sway`. Para configurar o compositor Wayland Sway, esses são os arquivos utilizados:
 
-**`config`** : main configuration file for general settings, keybindings and window rules <br/>
-**`sway-idle`** : idle configuration, what happen when system goes in idle state <br/>
-**`sway-input`** : input configuration, keyboard and mouse/touchpad settings <br/>
-**`sway-modes`** : mode keybindings like resize, move and gaps <br/>
-**`sway-output`** : output configuration, wallpapers and monitors <br/>
-**`sway-theme`** : theme configuration, colors, borders, gaps, titlebars, etc.
+**`config`** : arquivo de configuração principal para configurações gerais, atalhos de teclado e regras de janelas <br/>
+**`sway-idle`** : configuração de inatividade, o que acontece quando o sistema entra em estado de inatividade <br/>
+**`sway-input`** : configuração de entrada, configurações de teclado e mouse/touchpad <br/>
+**`sway-modes`** : atalhos de modos como redimensionar, mover e espaços <br/>
+**`sway-output`** : configuração de saída, papéis de parede e monitores <br/>
+**`sway-theme`** : configuração de tema, cores, bordas, espaços, barras de título, etc.
 
-> If you need any help with sway configuration, run : `man 5 sway` in terminal.
+> Se precisar de ajuda com a configuração do sway, execute: `man 5 sway` no terminal.
 
 :::warning
 
-When you change the `theme`, colors in **sway-theme** file gets overwritten by the theme script.
-
+Quando você mudar o `tema`, as cores no arquivo **sway-theme** serão sobrescritas pelo script de tema.
 :::
 
-<!-- Keybindings ---------------------------------- -->
+<!-- Atalhos de teclado ---------------------------------- -->
 
-## Keybindings
+## Atalhos de teclado
 
-Here's a list of some important keybinds you need to know for operating Sway easily. If you want to view, modify or add new keybinds, Edit `~/.config/sway/config` and `~/.config/sway/sway-modes` files.
+Aqui está uma lista de alguns atalhos de teclado importantes para operar o Sway de forma eficiente. Se você deseja visualizar, modificar ou adicionar novos atalhos, edite os arquivos ~/.config/sway/config e ~/.config/sway/sway-modes.
 
-### Applications
+### Aplicativos
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + Return</kbd> | Open terminal |
-| <kbd>super + shift + Return</kbd> | Open floating terminal |
-| <kbd>super + alt + Return</kbd> | Open fullscreen terminal |
-| <kbd>super + shift + F</kbd> | Open file manager (thunar) |
-| <kbd>super + shift + E</kbd> | Open text editor (geany) |
-| <kbd>super + shift + W</kbd> | Open web browser (firefox) |
+| <kbd>super + Return</kbd> | Abre o terminal |
+| <kbd>super + shift + Return</kbd> | Abre o terminal flutuante |
+| <kbd>super + alt + Return</kbd> | Abre o terminal em tela cheia |
+| <kbd>super + shift + F</kbd> | Abre o gerenciador de arquivos (thunar) |
+| <kbd>super + shift + E</kbd> | Abre o editor de texto (geany) |
+| <kbd>super + shift + W</kbd> | Abre o navegador (firefox) |
 
-### Menu and Applets
+### Menu e Applets
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>alt + F1</kbd> | Open application launcher |
-| <kbd>alt + F2</kbd> | Open command runner |
-| <kbd>super + D</kbd> | Open application launcher |
-| <kbd>super + R</kbd> | Open command runner |
-| <kbd>super + N</kbd> | Open network manager applet |
-| <kbd>super + M</kbd> | Open music applet |
-| <kbd>super + X</kbd> | Open powermenu applet |
-| <kbd>super + S</kbd> | Open screenshots applet |
-| <kbd>super + B</kbd> | Open bluetooth applet |
+| <kbd>alt + F1</kbd> | Abre o lançador de aplicativos |
+| <kbd>alt + F2</kbd> | Abre o executor de comandos |
+| <kbd>super + D</kbd> | Abre o lançador de aplicativos |
+| <kbd>super + R</kbd> | Abre o executor de comandos |
+| <kbd>super + N</kbd> | Abre o applet de gerenciador de conexão |
+| <kbd>super + M</kbd> | Abre o applet de música |
+| <kbd>super + X</kbd> | Abre o applet de menu de energia |
+| <kbd>super + S</kbd> | Abre o applet de captura de tela |
+| <kbd>super + B</kbd> | Abre o applet de bluetooth |
 
-### Hardware Keys
+### Atalhos de Hardware
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>Print</kbd> | Take screenshot |
-| <kbd>alt + Print</kbd> | Take screenshot in 5 seconds delay |
-| <kbd>shift + Print</kbd> | Take screenshot in 10 seconds delay |
-| <kbd>ctrl + Print</kbd> | Take screenshot of currently focused window |
-| <kbd>super + Print</kbd> | Take screenshot of selected area |
-| <kbd>XF86AudioRaiseVolume</kbd> | Increase volume |
-| <kbd>XF86AudioLowerVolume</kbd> | Decrease volume |
-| <kbd>XF86AudioMute</kbd> | Toggle mute speakers |
-| <kbd>XF86AudioMicMute</kbd> | Toggle mute microphone |
-| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Media controls (MPD) |
-| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
-| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>Print</kbd> | Tira um screenshot |
+| <kbd>alt + Print</kbd> | Tira um screenshot com 5 segundos de espera |
+| <kbd>shift + Print</kbd> | Tira um screenshot com 10 segundos de espera |
+| <kbd>ctrl + Print</kbd> | Tira um screenshot da janela em foco |
+| <kbd>super + Print</kbd> | Tira um screenshot da área selecionada |
+| <kbd>XF86AudioRaiseVolume</kbd> | Aumenta o volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Diminui o volume |
+| <kbd>XF86AudioMute</kbd> | Alterna o mudo dos autofalantes |
+| <kbd>XF86AudioMicMute</kbd> | Alterna o mudo do microfone |
+| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Controle de mídia (MPD) |
+| <kbd>XF86MonBrightnessUp</kbd> | Aumenta o brilho da tela |
+| <kbd>XF86MonBrightnessDown</kbd> | Diminui o brilho da tela |
 
-### Workspaces
-| Keys | Action |
+### Áreas de Trabalho
+
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + 1..10</kbd> | Switch to respective workspace |
-| <kbd>super + shift + 1..10</kbd> | Move focused container to respective workspace |
+| <kbd>super + 1..10</kbd> | Troca para área de trabalho respectiva |
+| <kbd>super + shift + 1..10</kbd> | Move o contêiner para a área de trabalho respectiva |
 
-### Window Management
+### Gerenciamento de Janela
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + C/Q</kbd> | Close focued window |
-| <kbd>super + H/V</kbd> | Split in horizontal/vertical orientation |
-| <kbd>super + G</kbd> | Toggle Split Mode |
-| <kbd>super + shift + S</kbd> | Set stacking layout |
-| <kbd>super + shift + T</kbd> | Set tabbed layout |
-| <kbd>super + shift + D</kbd> | Set default layout |
-| <kbd>super + shift + L</kbd> | Toggle between stacking/tabbed/split |
-| <kbd>super + shift + V</kbd> | Toggle between horizontal/vertical |
-| <kbd>super + O</kbd> | Sticky floating windows |
-| <kbd>super + F</kbd> | Toggle fullscreen |
-| <kbd>super + Space</kbd> | Toggle floating/tiling |
-| <kbd>super + shift + Space</kbd> | Toggles focus between floating/tiling containers |
-| <kbd>super + Left/Right/Up/Down</kbd> | Sets focus to the nearest container in the given direction |
-| <kbd>super + shift + Left/Right/Up/Down</kbd> | Move focused window in the given direction |
-| <kbd>super + Y</kbd> | Changing border style |
-| <kbd>super + A</kbd> | Sets focus to the parent container |
-| <kbd>super + Z</kbd> | Sets focus to the child container |
-| <kbd>super + Tab</kbd> | Automatically sets focus to the adjacent container |
-| <kbd>super + alt + C</kbd> | Move floating container to the center of all outputs |
-| <kbd>super + alt + P</kbd> | Move floating container to the current position of the cursor |
-| <kbd>super + alt + Left/Right/Up/Down</kbd> | Resizing containers/windows |
-| <kbd>super + Minus</kbd> | Make the currently focused window a scratchpad |
-| <kbd>super +  shift + Minus</kbd> | Show the first scratchpad window |
-| <kbd>super +  shift + R</kbd> | Toggle Resize mode |
-| <kbd>super +  shift + M</kbd> | Toggle Resize mode |
-| <kbd>super +  shift + G</kbd> | Toggle Gaps mode |
-| <kbd>super +  shift + O</kbd> | Toggle Opacity mode |
+| <kbd>super + C/Q</kbd> | Fecha a janela em foco |
+| <kbd>super + H/V</kbd> | Divide a janela na orientação horizontal/vertical |
+| <kbd>super + G</kbd> | Alterna o modo de divisão |
+| <kbd>super + shift + S</kbd> | Define o layout de pilha |
+| <kbd>super + shift + T</kbd> | Define o layout de abas |
+| <kbd>super + shift + D</kbd> | Define o layout padrão |
+| <kbd>super + shift + L</kbd> | Alterna entre os modos stacking/tabbed/split |
+| <kbd>super + shift + V</kbd> | Alterna entre os layouts horizontal/vertical |
+| <kbd>super + O</kbd> | Tornar a janela flutuante "grudada" |
+| <kbd>super + F</kbd> | Alterna o modo tela cheia |
+| <kbd>super + Space</kbd> | Alterna entre flutuante/encaixado |
+| <kbd>super + shift + Space</kbd> | Alterna o foco entre janelas flutuantes/encaixadas |
+| <kbd>super + Left/Right/Up/Down</kbd> | Define o foco na janela mais próxima na direção indicada |
+| <kbd>super + shift + Left/Right/Up/Down</kbd> | Move a janela focada na direção indicada |
+| <kbd>super + Y</kbd> | Altera o estilo da borda |
+| <kbd>super + A</kbd> | Define o foco para o container pai |
+| <kbd>super + Z</kbd> | Define o foco para o container filho |
+| <kbd>super + Tab</kbd> | Define o foco automaticamente para o container adjacente |
+| <kbd>super + alt + C</kbd> | Move a janela flutuante para o centro de todas as saídas |
+| <kbd>super + alt + P</kbd> | Move a janela flutuante para a posição atual do cursor |
+| <kbd>super + alt + Left/Right/Up/Down</kbd> | Redimensiona as janelas/containers |
+| <kbd>super + Minus</kbd> | Torna a janela focada uma janela de rascunho |
+| <kbd>super + shift + Minus</kbd> | Mostra a primeira janela do rascunho |
+| <kbd>super + shift + R</kbd> | Alterna o modo de redimensionamento |
+| <kbd>super + shift + M</kbd> | Alterna o modo de redimensionamento |
+| <kbd>super + shift + G</kbd> | Alterna o modo de gaps |
+| <kbd>super + shift + O</kbd> | Alterna o modo de opacidade |
 
-### wayland compositor
+### Compositor Wayland
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + shift + C</kbd> | Reload Sway |
-| <kbd>super + shift + Q</kbd> | Quit Sway |
+| <kbd>super + shift + C</kbd> | Recarrega o Sway |
+| <kbd>super + shift + Q</kbd> | Sai do Sway |
 
-### Misc Keys
+### Atalhos variados
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>ctrl + alt + L</kbd> | Trigger lockscreen |
-| <kbd>super + P</kbd> | Run colorpicker  |
+| <kbd>ctrl + alt + L</kbd> | Aciona o bloqeuio de tela |
+| <kbd>super + P</kbd> | Execupa o seletor de cor |
 
 <!-- Nvidia --------------------------------------- -->
 
 ## Nvidia
 
-If you're on `Archcraft` and install the provided package, There's nothing else you need to do in order to run it on Nvidia machine. When you install Archcraft on a machine that has Nvidia, It does all the operations (mentioned below) required to run a wayland compositor on such machines. The compositor should work fine.
+Se você está usando `Archcraft` e instalou os pacotes providos, não há mais nada que você tenha que fazer para rodar em uma máquina Nvidia. Quando você instala o Archcraft em máquina com Nvidia, ele faz todas as operações (mencionadas abaixo) requeridas para rodar o compositor wayland em sua máquina. O compositor deverá funcionar bem.
 
-If you're running any other distribution and want to install this setup on your Nvidia machine, You need to do some tweaking. In this guide, I'm assuing you're using **Arch Linux**. Follow the steps below to make this wayland compositor work on Nvidia :
+Se você está rodando alguma outra distribuição e quer instalar na sua máquina com Nvidia, você precisa fazer alguns ajuses. Nesse guia, estarei assumindo que você está usando **Arch Linux**. Siga os passos abaixo para fazer este compositor wayland funcionar com Nvidia:
 
-- Install **Nvidia Drivers** on your system. [NVIDIA](https://wiki.archlinux.org/title/NVIDIA) 
-- Edit `/etc/mkinitcpio.conf` file and add **`nvidia`** kernel modules
+- Instale **Nvidia Dnewms** no seu sistema. [NVIDIA](https://wiki.archlinux.org/title/NVIDIA) 
+- Edite o arquivo `/etc/mkinitcpio.conf` e adicione os módulos de kernel**`nvidia`** 
 ```
 MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 ```
 
-- In the same file, Remove `kms` hook from hooks array if present.
-- Rebuild your initrd file with : `sudo mkinitcpio -P linux`
-- Edit `/etc/default/grub` file and add **`nvidia_drm.modeset=1`** kernel parameter for Nvidia
+- No mesmo arquivo, remova o hook `kms` da variável de hooks se tiver
+- Reconstrua o seu arquivo initrd com: `sudo mkinitcpio -P linux`
+- Edite o arquivo `/etc/default/grub` e adicione o parâmetro **`nvidia_drm.modeset=1`** do kernel para Nvidia
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nvidia_drm.modeset=1 ..."
 ```
 
-- Update your grub config file with : `sudo grub-mkconfig -o /boot/grub/grub.cfg`
-- Reboot your Nvidia Machine and login to your wayland compositor, It should work now.
+- Atualize sua configuração do grub com: `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+- Reinicie sua máquina Nvidia e faça login no seu compositor wayland, isso deve funcionar agora.
 
-More Information: [NVIDIA#Installation](https://wiki.archlinux.org/title/NVIDIA#Installation), [NVIDIA#DRM_kernel_mode_setting](https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting)
+Mais informações: [NVIDIA#Instalação](https://wiki.archlinux.org/title/NVIDIA#Installation), [NVIDIA#DRM_kernel_mode_setting](https://wiki.archlinux.org/title/NVIDIA#DRM_kernel_mode_setting)
 
-<!-- Themes --------------------------------------- -->
+<!-- Temas --------------------------------------- -->
 
-## Screenshots
+## Capturas de tela
 
 ### Desktop
 
-Here's few screenshots of `Sway` desktop. These'll give you an idea of the experience of Sway in Archcraft. 
+Aqui estão algumas capturas detela do `Sway`. elas te darão uma ideia da experiência do Sway no Archcraft.
 
 |Desktop 1|Desktop 2|Desktop 3|Desktop 4|
 |---|---|---|---|
@@ -450,23 +448,25 @@ Here's few screenshots of `Sway` desktop. These'll give you an idea of the exper
 |---|---|---|---|
 |![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/desktop/desktop_13.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/desktop/desktop_14.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/desktop/desktop_15.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/desktop/desktop_16.png)|
 
-### Themes
+### Temas
 
-To Change the theme, Click on `Color Palette` icon on waybar. To apply a random theme, **`Left Click`** on the theme module and To restore the default theme, **`Right Click`** on the theme module.
+Para mudar o tema, clique no ícone de `Paleta de Cores` na waybar. Para aplicar um tema aleatório, **clique com o botão esquerdo** no módulo de tema. Para restaurar o tema padrão, **clique com o botão direito** no módulo de tema.
 
 <Tabs>
 
-<TabItem value="wc_1" label="Default Theme" default>
+<TabItem value="wc_1" label="Tema Padrão" default>
 
-There's only one theme available for Sway.
+Há apenas um tema disponível para o Sway.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/main.png)
 
 </TabItem>
 
-<TabItem value="wc_2" label="Random Themes" default>
+<TabItem value="wc_2" label="Temas Aleatórios" default>
 
-Auto Generated themes with `pywal`.
+Temas gerados automaticamente com `pywal`.
+
+</TabItem>
 
 ![gif](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/sway/random/random.gif)
 
@@ -479,23 +479,23 @@ Auto Generated themes with `pywal`.
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar as minhas configurações para as novas?</b></summary>
 
-Download the updated package from ko-fi (for free) and just install it to update to new configs.
+Baixe o pacote atualizado em ko-fi (de graça) e apenas instale-o para atualizar para as novas configurações.
 
-#### Steps to get updates (or re-download files):
-- Login to you Ko-fi account
-- Go to your `Ko-fi Payments History`
-- Select the purchases you've made
-- Click on `View Details`
-- Then, Click on `View Content` to download the updated files.
+#### Passos para pegar as atualizações (ou baixar os arquivos novamente):
+- Faça login na sua conta do Ko-fi
+- Vá para o seu `Histórico e Pagamentos Ko-fi`
+- Selecione as compras que você fez
+- Clique em `Ver Detalhes`
+- Depois, clique em `Ver Conteúdo` para baixar os arquivos atualizados.
 
 </details>
 
 <details>
-<summary><b>Why my cursor is not visible?</b></summary>
+<summary><b>Por que meu cursor não está visível?</b></summary>
 
-When using certain graphics drivers (e.g. the VMSVGA graphics controller or the proprietary NVIDIA driver), the cursor is invisible. This can be fixed by using software cursors :
+Quando usamos certos drivers gráficos (ex: o controlador gráfico VMSVGA ou o driver proprietário da Nvidia), o cursor fica invisível. Isso pode ser consertado usando um software de cursor:
 ```bash
 $ export WLR_NO_HARDWARE_CURSORS=1
 ```
@@ -503,9 +503,9 @@ $ export WLR_NO_HARDWARE_CURSORS=1
 </details>
 
 <details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
+<summary><b>Como mudar o tema GTK, ícones e cursor?</b></summary>
 
-To change GTK theme, icons and cursor in Sway session, Edit `~/.config/sway/sway-theme` file and restart Sway to apply the changes.
+Para mudar o tema GTK, ícones e cursor na sessão do Sway, edite o arquivo `~/.config/sway/sway-theme` e reinicie o Sway para aplicar as mudanças.
 ```bash
 gsettings set $gnome-schema gtk-theme 'Manhattan'
 gsettings set $gnome-schema icon-theme 'Luv-Folders-Dark'
@@ -513,32 +513,29 @@ gsettings set $gnome-schema cursor-theme 'Qogirr'
 gsettings set $gnome-schema font-name 'Noto Sans 9'
 ```
 
-</details>
-
 <details>
-<summary><b>How to manage multiple monitors and resolution in Sway?</b></summary>
+<summary><b>Como gerenciar múltiplos monitores e resolução no Sway?</b></summary>
 
-If you use multiple monitors with Sway wayland compositor, you can manage them as follow:
+Se você usa múltiplos monitores com o compositor Sway, pode gerenciá-los da seguinte forma:
 
-1. You can get a list of output names with: `swaymsg -t get_outputs`
-2. Edit `~/.config/sway/sway-output` file and use the information you get by the command above:
+1. Você pode obter uma lista dos nomes dos monitores com o comando: `swaymsg -t get_outputs`
+2. Edite o arquivo `~/.config/sway/sway-output` e use as informações obtidas pelo comando acima:
 ```bash
-# Laptop screen (internal monitor), mode: 1920x1080
+# Tela do laptop (monitor interno), resolução: 1920x1080
 output eDP-1 resolution 1920x1080 position 0,0
 
-# External monitor, right of laptop screen, mode: 1920x1080
+# Monitor externo, à direita da tela do laptop, resolução: 1920x1080
 output HDMI-A-1 resolution 1920x1080 position 1920,0
-
 ```
 
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Como o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares de computadores. Você pode fazer com que ele funcione em tais computadores seguindo os métodos abaixo:
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+1. Abra o Alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite os keybindings/script que lançam o Alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+2. Edite o arquivo de desktop **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
 
 </details>
