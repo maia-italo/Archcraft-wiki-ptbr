@@ -23,39 +23,39 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-Bspwm is a popular tiling window manager. It represents windows as the leaves of a full binary tree. Bspwm supports multiple monitors and is configured and controlled through messages. It's an **alternate window manager** in Archcraft.
+Bspwm é um popular gerenciador de janelas tiling. Ele representa as janelas como as folhas de uma árvore binária completa. O Bspwm oferece suporte a múltiplos monitores e é configurado e controlado através de mensagens. É um **gerenciador de janelas alternativo** no Archcraft.
 
 [![video](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/main.png)](https://youtu.be/GnF9CK_gwW4)
 
 :::tip[Bspwm Premium]
 
-The Ultimate Bspwm Configuration With **Extra Functionality And Themes** (25 Pre-Made + Infinite Auto Generated Themes With `pywal`)
+A configuração definitiva do Bspwm com **funcionalidades extras e temas** (25 temas pré-configurados + temas infinitos gerados automaticamente com `pywal`)
 
-Get Bspwm Premium From [**`ko-fi`**](https://ko-fi.com/s/5c859ad898) And Support Archcraft Development.
+Obtenha o Bspwm Premium em [**`ko-fi`**](https://ko-fi.com/s/5c859ad898) e apoie o desenvolvimento do Archcraft.
 
 :::
 
-<!-- Installation --------------------------------- -->
+<!-- Instalação --------------------------------- -->
 
-## Installation
+## Instalação
 
-Since Bspwm is the secondary/alternate window manager of Archcraft, It comes pre-installed. But if you choose another window manager (let's say `openbox`) during installation of Archcraft or you ever want to install/reinstall Bspwm again, Then :
+Como o Bspwm é o gerenciador de janelas alternativo/secundário do Archcraft, ele já vem pré-instalado. Mas, caso você tenha escolhido outro gerenciador de janelas (como o `openbox`) durante a instalação do Archcraft ou queira instalar/reinstalar o Bspwm, siga as instruções abaixo:
 
 <Tabs>
 
-<TabItem value="wm_1" label="Regular" default>
+<TabItem value="wm_1" label="Versão Regular" default>
 
-Open a terminal and run the following command to install the regular version of Bspwm :
+Abra um terminal e execute o seguinte comando para instalar a versão regular do Bspwm:
 ```bash
 $ sudo pacman -Sy archcraft-bspwm
 ```
 </TabItem>
 
-<TabItem value="wm_2" label="Premium" default>
+<TabItem value="wm_2" label="Premium">
 
-Download the premium package from [ko-fi](https://ko-fi.com/s/5c859ad898), and save it in a directory. Open a terminal in same directory and run the following command to install Bspwm premium :
+Baixe o pacote premium de [ko-fi](https://ko-fi.com/s/5c859ad898) e salve-o em um diretório. Abra um terminal no mesmo diretório e execute o seguinte comando para instalar o Bspwm Premium:
 ```bash
 $ sudo pacman -U archcraft-bspwm-premium-X.Y-Z-any.pkg.tar.zst
 ```
@@ -65,273 +65,274 @@ $ sudo pacman -U archcraft-bspwm-premium-X.Y-Z-any.pkg.tar.zst
 
 :::info[Archcraft Prime]
 
-<Highlight color="#62aeef">Bspwm Premium</Highlight> comes pre-installed on [**`Archcraft Prime ISO`**](https://ko-fi.com/s/c925a2a8c1)
+O <Highlight color="#62aeef">Bspwm Premium</Highlight> já vem pré-instalado no [**`Archcraft Prime ISO`**](https://ko-fi.com/s/c925a2a8c1)
 
 :::
 
-<!-- Configuration -------------------------------- -->
+<!-- Configuração -------------------------------- -->
 
-## Configuration
+## Configuração
 
-Bspwm is pre-configured in Archcraft. In this section, We'll see how the Bspwm window manager is configured, what tools and utilities are used to make it look and work like a complete desktop environment.
+O Bspwm já vem pré-configurado no Archcraft. Nesta seção, veremos como o gerenciador de janelas Bspwm é configurado, quais ferramentas e utilitários são usados para fazer com que ele funcione como um ambiente de desktop completo.
 
-### Config Structure
+### Estrutura de Configuração
 
-The configuration structure of Bspwm in Archcraft looks something like this:
+A estrutura de configuração do Bspwm no Archcraft é semelhante a esta:
 
 ```
 ~/.config
-└── bspwm           : bspwm config directory
-    ├── alacritty   : terminal config
-    ├── scripts     : scripts used for bspwm
-    ├── themes      : all themes (polybar, rofi configs) 
-    ├── bspwmrc     : main bspwm config file
-    ├── dunstrc     : dunst config for notifications
-    ├── picom.conf  : compositor config
-    ├── sxhkdrc     : keybindings config file
-    └── xsettingsd  : gtk themes, icons and fonts config file
+└── bspwm           : diretório de configuração do bspwm
+    ├── alacritty   : configuração do terminal
+    ├── scripts     : scripts usados para bspwm
+    ├── themes      : todos os temas (polybar, configurações do rofi)
+    ├── bspwmrc     : arquivo principal de configuração do bspwm
+    ├── dunstrc     : configuração do dunst para notificações
+    ├── picom.conf  : configuração do compositor
+    ├── sxhkdrc     : arquivo de configuração dos atalhos de teclado
+    └── xsettingsd  : arquivo de configuração de temas GTK, ícones e fontes
 ```
 
 ### Terminal
 
-**Alacritty** is the default terminal. In the Bspwm window manager, alacritty is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/bspwm/alacritty` directory. These are the following config files you can modify to change the behaviour of your terminal:
+**Alacritty** é o terminal padrão. No gerenciador de janelas Bspwm, o Alacritty é lançado com um arquivo de configuração alternativo. Se precisar mudar alguma coisa, certifique-se de modificar os arquivos de configuração no diretório `~/.config/bspwm/alacritty`. Estes são os arquivos de configuração que você pode modificar para alterar o comportamento do seu terminal:
 
-**`~/.config/bspwm/alacritty/alacritty.toml`** : Main configuration file <br/>
-**`~/.config/bspwm/alacritty/colors.toml`** : Colors configurations <br/>
-**`~/.config/bspwm/alacritty/fonts.toml`** : Fonts configurations
+**`~/.config/bspwm/alacritty/alacritty.toml`** : Arquivo de configuração principal <br/>
+**`~/.config/bspwm/alacritty/colors.toml`** : Configurações de cores <br/>
+**`~/.config/bspwm/alacritty/fonts.toml`** : Configurações de fontes
 
-> If you need any help with alacritty config, run : `man 5 alacritty` in terminal.
-
-:::warning
-
-When you change the `theme`, the **colors.toml** and **fonts.toml** file get overwritten by the theme script.
-
-:::
-
-### Notification
-
-**Dunst** is used as a notification daemon for notifications in Bspwm. In the Bspwm window manager, dunst is launched with an alternative config file, which is `~/.config/bspwm/dunstrc`. So, If you need to modify anything, make sure you edit this file.
-
-> If you need any help with dunst config, run : `man 5 dunst` in terminal.
+> Se precisar de ajuda com a configuração do alacritty, execute: `man 5 alacritty` no terminal.
 
 :::warning
 
-When you change the `theme`, the fonts and colors in **dunstrc** file get overwritten by the theme script.
+Quando você muda o `tema`, os arquivos **colors.toml** e **fonts.toml** são sobrescritos pelo script de tema.
 
 :::
 
-### Wallpaper
+### Notificação
 
-**Feh** sets the wallpaper in the Bspwm. If you want to change the wallpaper, Edit the script `~/.fehbg`
+**Dunst** é usado como um daemon de notificações no Bspwm. No gerenciador de janelas Bspwm, o Dunst é lançado com um arquivo de configuração alternativo, que é o `~/.config/bspwm/dunstrc`. Então, se precisar modificar algo, edite este arquivo.
+
+> Se precisar de ajuda com a configuração do dunst, execute: `man 5 dunst` no terminal.
+
+:::warning
+
+Quando você muda o `tema`, as fontes e cores no arquivo **dunstrc** são sobrescritas pelo script de tema.
+
+:::
+
+### Papel de Parede
+
+**Feh** define o papel de parede no Bspwm. Se quiser mudar o papel de parede, edite o script `~/.fehbg`.
 
 ```bash
 #!/bin/sh
-feh --no-fehbg --bg-fill '/path/to/your/wallpaper' 
+feh --no-fehbg --bg-fill '/caminho/para/o/seu/papel/de/parede'
 ```
 :::warning
 
-When you change the `theme`, the script `~/.fehbg` get overwritten by the theme script.
+Quando você muda o `tema`, o script `~/.fehbg` é sobrescrito pelo script de tema.
 
 :::
 
-### Statusbar
+### Barra de Status
 
-**Polybar** is used as the statusbar in Archcraft's Bspwm window manager.
+**Polybar** é utilizado como a barra de status no gerenciador de janelas Bspwm do Archcraft.
 
-The configurations for polybar can be found inside the _currently applied theme's directory_, which is inside the _themes_ directory of Bspwm `~/.config/bspwm/themes`
+As configurações para o Polybar podem ser encontradas no diretório do **tema atualmente aplicado**, que está dentro do diretório **themes** do Bspwm: `~/.config/bspwm/themes`.
 
-Let's say that the currently applied theme is `default` and you want to modify the **polybar** settings, or perhaps want to add/remove modules, then you need to edit the following files :
+Vamos supor que o tema atualmente aplicado seja o `default` e você queira modificar as configurações do **polybar**, ou talvez adicionar/remover módulos. Para isso, você precisa editar os seguintes arquivos:
 
-**`~/.config/bspwm/themes/default/polybar/config.ini`** : Main config file <br/>
-**`~/.config/bspwm/themes/default/polybar/colors.ini`** : Colors config file <br/>
-**`~/.config/bspwm/themes/default/polybar/modules.ini`** : Modules config file
+**`~/.config/bspwm/themes/default/polybar/config.ini`** : Arquivo de configuração principal <br/>
+**`~/.config/bspwm/themes/default/polybar/colors.ini`** : Arquivo de configuração de cores <br/>
+**`~/.config/bspwm/themes/default/polybar/modules.ini`** : Arquivo de configuração de módulos
 
-> If you need any help with polybar config, visit : [polybar wiki](https://github.com/polybar/polybar/wiki)
+> Se precisar de ajuda com a configuração do polybar, visite: [wiki do polybar](https://github.com/polybar/polybar/wiki)
 
 :::warning
 
-When you change the `theme`, the fonts in **config.ini** file and **colors.ini** file of polybar get overwritten by the theme script.
+Quando você mudar o `tema`, as fontes nos arquivos **config.ini** e **colors.ini** do Polybar serão sobrescritas pelo script do tema.
 
 :::
 
-### Launchers and Applets
+### Launchers e Applets
 
-**Rofi** is used for application launchers, command runner and various applets. To modify the rofi config, edit `~/.config/rofi/config.rasi` file.
+**Rofi** é utilizado para lançadores de aplicativos, execução de comandos e diversos applets. Para modificar a configuração do Rofi, edite o arquivo `~/.config/rofi/config.rasi`.
 
-> If you need any help with rofi config, run : `man rofi` in terminal.
+> Se precisar de ajuda com a configuração do Rofi, execute: `man rofi` no terminal.
 
-The scripts for rofi that are used in Bspwm can be found it `~/.config/bspwm/scripts` directory. These are the following scripts that uses rofi to provide the launchers and applets in Bspwm :
+Os scripts do Rofi usados no Bspwm podem ser encontrados no diretório `~/.config/bspwm/scripts`. Esses são os scripts que utilizam o Rofi para fornecer os lançadores e applets no Bspwm:
 
-**`rofi_askpass`** : rofi based `sudo` frontend to get root password <br/>
-**`rofi_asroot`** : applet to open apps as root <br/>
-**`rofi_bluetooth`** : bluetooth applet to quickly connect to BT devices <br/>
-**`rofi_launcher`** : an application launcher, cmd runner, file manager and task manager  <br/>
-**`rofi_music`** : music applet, that controls MPD with `mpc` <br/>
-**`rofi_powermenu`** : power menu, with confirmation dialog <br/>
-**`rofi_runner`** : quickly lets you run a command <br/>
-**`rofi_screenshot`** : screenshot applet that works with maim <br/>
-**`rofi_themes`** : applet to change the themes <br/>
-**`rofi_windows`** : applet to manage opened windows <br/>
+**`rofi_askpass`** : Frontend baseado em rofi para `sudo` para obter a senha de root <br/>
+**`rofi_asroot`** : Applet para abrir aplicativos como root <br/>
+**`rofi_bluetooth`** : Applet de bluetooth para conectar rapidamente a dispositivos BT <br/>
+**`rofi_launcher`** : Lançador de aplicativos, executor de comandos, gerenciador de arquivos e gerenciador de tarefas <br/>
+**`rofi_music`** : Applet de música, que controla o MPD com `mpc` <br/>
+**`rofi_powermenu`** : Menu de energia, com diálogo de confirmação <br/>
+**`rofi_runner`** : Permite executar rapidamente um comando <br/>
+**`rofi_screenshot`** : Applet de captura de tela que funciona com o maim <br/>
+**`rofi_themes`** : Applet para mudar os temas <br/>
+**`rofi_windows`** : Applet para gerenciar janelas abertas <br/>
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts.
+Se você quiser modificar algum applet ou talvez estender a funcionalidade de um applet, basta editar esses scripts.
 
-The configuration of each script can be found inside the _currenty applied theme's directory_, which is inside the themes directory of Bspwm `~/.config/bspwm/themes`
+A configuração de cada script pode ser encontrada no diretório do **tema atualmente aplicado**, dentro do diretório de temas do Bspwm: `~/.config/bspwm/themes`.
 
-Let's say that the currently applied theme is `default` and you want to modify the looks of **launcher**, then you need to edit the `~/.config/bspwm/themes/default/rofi/launcher.rasi` file. Same goes for every other applet, Edit the respective file in the same directory.
+Vamos supor que o tema atualmente aplicado seja o `default` e você queira modificar a aparência do **launcher**, então você precisa editar o arquivo `~/.config/bspwm/themes/default/rofi/launcher.rasi`. O mesmo vale para todos os outros applets, basta editar o arquivo respectivo no mesmo diretório.
 
-> If you need any help with rofi theming, run : `man rofi-theme` in terminal.
+> Se precisar de ajuda com a criação de temas para o Rofi, execute: `man rofi-theme` no terminal.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/bspwm/themes/<THEME>/rofi/shared/colors.rasi` and `~/.config/bspwm/themes/<THEME>/rofi/shared/fonts.rasi` files.
+Para mudar as cores e fontes dos lançadores e applets, edite os arquivos `~/.config/bspwm/themes/<TEMA>/rofi/shared/colors.rasi` e `~/.config/bspwm/themes/<TEMA>/rofi/shared/fonts.rasi`.
 
 :::warning
 
-When you change the `theme`, the **shared/colors.rasi** and **shared/fonts.rasi** files get overwritten by the theme script.
+Quando você mudar o `tema`, os arquivos **shared/colors.rasi** e **shared/fonts.rasi** serão sobrescritos pelo script do tema.
 
 :::
 
 ### Compositor
 
-**Picom** is used for compositing. It's a lightweight compositor with shadowing, advanced blurring and fading. In Bspwm, picom is launched with an alternative config file, which is `~/.config/bspwm/picom.conf`. 
+**Picom** é utilizado para composição. Ele é um compositor leve com sombreamento, desfoque avançado e transições de fade. No Bspwm, o Picom é iniciado com um arquivo de configuração alternativo, que é o `~/.config/bspwm/picom.conf`.
 
-If you need to change anything related to picom, Edit this picom config file.
+Se você precisar mudar algo relacionado ao Picom, edite esse arquivo de configuração do Picom.
 
-> If you need any help with picom config, check the picom's default config file in `/etc/xdg/picom.conf`
+> Se precisar de ajuda com a configuração do Picom, confira o arquivo de configuração padrão do Picom em `/etc/xdg/picom.conf`.
 
 :::info
 
-If you're having screen-tearing issues, using `glx` backend can solve this issue. <br/>
-If you're facing lagging, hangs and freezes, try switching between `xrender` and `glx` backend.  
+Se você estiver tendo problemas de _screen tearing_, usar o backend `glx` pode resolver o problema. <br/>
+Se você enfrentar lag, travamentos ou congelamentos, tente alternar entre os backends `xrender` e `glx`.
 
 :::
 
 :::warning
 
-When you change the `theme`, things like _backend_, _shadows_, _blurring_ in **picom.conf** file gets overwritten by theme script.
+Quando você mudar o `tema`, configurações como _backend_, _sombras_, _desfoque_ no arquivo **picom.conf** serão sobrescritas pelo script do tema.
 
 :::
 
-### Window Manager
+### Gerenciador de Janelas
 
-The configuration of Bspwm is available in `~/.config/bspwm`. To configure Bspwm window manager, these are the files that are used :
+A configuração do Bspwm está disponível em `~/.config/bspwm`. Para configurar o gerenciador de janelas Bspwm, os seguintes arquivos são usados:
 
-**`bspwmrc`** : main configuration file responsible for determining the behaviour and settings of the overall session. Edit this file to run your apps on startup, set window rules, configure workspaces, and bspwm appearance. <br/>
-**`sxhkdrc`** : Bspwm does not handle any keyboard input and instead provides the `bspc` program as its interface. So, For keyboard shortcuts, a hotkey daemon `sxhkd` is used. Edit this file to add/remove keybindings. <br/>
+**`bspwmrc`** : arquivo de configuração principal responsável por determinar o comportamento e as configurações da sessão geral. Edite este arquivo para rodar seus aplicativos na inicialização, definir regras de janelas, configurar áreas de trabalho e aparência do Bspwm. <br/>
+**`sxhkdrc`** : O Bspwm não lida com a entrada do teclado e, em vez disso, fornece o programa `bspc` como interface. Portanto, para atalhos de teclado, um daemon de hotkeys, o `sxhkd`, é usado. Edite este arquivo para adicionar/remover atalhos de teclado. <br/>
 
-> If you need any help with bspwm configuration, run : `man bspwm` in terminal. <br/>
-> If you need any help with sxhkd configuration, run : `man sxhkd` in terminal.
+> Se precisar de ajuda com a configuração do Bspwm, execute: `man bspwm` no terminal. <br/>
+> Se precisar de ajuda com a configuração do sxhkd, execute: `man sxhkd` no terminal.
 
 :::warning
 
-When you change the `theme`, things like _border colors_, _border width_, _gaps_ and _split ratio_ in **bspwmrc** file gets overwritten by the theme script.
+Quando você mudar o `tema`, configurações como _cores de borda_, _largura da borda_, _gaps_ e _proporção de divisão_ no arquivo **bspwmrc** serão sobrescritas pelo script do tema.
 
 :::
 
-<!-- Keybindings ---------------------------------- -->
+<!-- Atalhos de teclado ---------------------------------- -->
 
-## Keybindings
+### Atalhos de Teclado
 
-Here's a list of some important keybinds you need to know for operating Bspwm easily. If you want to view, modify or add new keybinds, Edit `~/.config/bspwm/sxhkdrc` file.
+Aqui está uma lista de alguns atalhos importantes para operar o Bspwm de forma mais eficiente. Se você quiser visualizar, modificar ou adicionar novos atalhos, edite o arquivo `~/.config/bspwm/sxhkdrc`.
 
-### Applications
+### Aplicativos
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + Return</kbd> | Open terminal (alacritty) |
-| <kbd>super + shift + Return</kbd> | Open floating terminal |
-| <kbd>super + alt + Return</kbd> | Open fullscreen terminal |
-| <kbd>super + shift + F</kbd> | Open file manager (thunar) |
-| <kbd>super + shift + E</kbd> | Open text editor (geany) |
-| <kbd>super + shift + W</kbd> | Open web browser (firefox) |
+| <kbd>super + Return</kbd> | Abre terminal (alacritty) |
+| <kbd>super + shift + Return</kbd> | Abre terminal flutuante |
+| <kbd>super + alt + Return</kbd> | Abre terminal em tela cheia |
+| <kbd>super + shift + F</kbd> | Abre gerenciador de arquivos (thunar) |
+| <kbd>super + shift + E</kbd> | Abre editor de texto (geany) |
+| <kbd>super + shift + W</kbd> | Abre navegador web (firefox) |
 
-### Menu and Applets
+### Menu e Applets
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super</kbd> | Open application launcher |
-| <kbd>alt + F1</kbd> | Open application launcher |
-| <kbd>alt + F2</kbd> | Open command runner |
-| <kbd>super + N</kbd> | Open network manager applet |
-| <kbd>super + B</kbd> | Open bluetooth applet |
-| <kbd>super + M</kbd> | Open music applet |
-| <kbd>super + X</kbd> | Open powermenu applet |
-| <kbd>super + S</kbd> | Open screenshots applet |
-| <kbd>super + R</kbd> | Open apps as root applet |
-| <kbd>super + T</kbd> | Open theme applet |
-| <kbd>super + W</kbd> | Open window applet |
+| <kbd>super</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F1</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F2</kbd> | Abre executor de comandos |
+| <kbd>super + N</kbd> | Abre applet do gerenciador de rede |
+| <kbd>super + B</kbd> | Abre applet de bluetooth |
+| <kbd>super + M</kbd> | Abre applet de música |
+| <kbd>super + X</kbd> | Abre applet de menu de energia |
+| <kbd>super + S</kbd> | Abre applet de capturas de tela |
+| <kbd>super + R</kbd> | Abre aplicativos como root |
+| <kbd>super + T</kbd> | Abre applet de temas |
+| <kbd>super + W</kbd> | Abre applet de janelas |
 
-### Hardware Keys
+### Atalhos de Hardware
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>Print</kbd> | Take screenshot |
-| <kbd>alt + Print</kbd> | Take screenshot in 5 seconds delay |
-| <kbd>shift + Print</kbd> | Take screenshot in 10 seconds delay |
-| <kbd>ctrl + Print</kbd> | Take screenshot of currently focused window |
-| <kbd>super + Print</kbd> | Take screenshot of selected area |
-| <kbd>XF86AudioRaiseVolume</kbd> | Increase volume |
-| <kbd>XF86AudioLowerVolume</kbd> | Decrease volume |
-| <kbd>XF86AudioMute</kbd> | Toggle mute speakers |
-| <kbd>XF86AudioMicMute</kbd> | Toggle mute microphone |
-| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Media controls (MPD) |
-| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
-| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>Print</kbd> | Tira captura de tela |
+| <kbd>alt + Print</kbd> | Tira captura de tela com atraso de 5 segundos |
+| <kbd>shift + Print</kbd> | Tira captura de tela com atraso de 10 segundos |
+| <kbd>ctrl + Print</kbd> | Tira captura de tela da janela focada |
+| <kbd>super + Print</kbd> | Tira captura de tela da área selecionada |
+| <kbd>XF86AudioRaiseVolume</kbd> | Aumenta volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Diminui volume |
+| <kbd>XF86AudioMute</kbd> | Ativa/desativa mudo dos alto-falantes |
+| <kbd>XF86AudioMicMute</kbd> | Ativa/desativa mudo do microfone |
+| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Controles de mídia (MPD) |
+| <kbd>XF86MonBrightnessUp</kbd> | Aumenta o brilho da tela |
+| <kbd>XF86MonBrightnessDown</kbd> | Diminui o brilho da tela |
 
-### Workspaces
-| Keys | Action |
+### Áreas de Trabalho
+
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + 1..8</kbd> | Switch to respective workspace |
-| <kbd>super + shift + 1..8</kbd> | Send active window to respective workspace |
-| <kbd>ctrl + alt + Left/Right</kbd> | Switch to previous/next workspace |
-| <kbd>super + ctrl + shift + Left/Right</kbd> | Send focused window to previous/next workspace |
+| <kbd>super + 1..8</kbd> | Alterna para a respectiva área de trabalho |
+| <kbd>super + shift + 1..8</kbd> | Envia janela ativa para a respectiva área de trabalho |
+| <kbd>ctrl + alt + Left/Right</kbd> | Alterna para a área de trabalho anterior/próxima |
+| <kbd>super + ctrl + shift + Left/Right</kbd> | Envia janela focada para a área de trabalho anterior/próxima |
 
-### Window Management
+### Gerenciamento de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + C</kbd> | Close focued window |
-| <kbd>super + shift + C</kbd> | Kill focued window |
-| <kbd>super + shift + H</kbd> | Hide/Unhide window |
-| <kbd>super + Left/Right/Up/Down</kbd> | Change focus of the window directionally |
-| <kbd>super + shift + Left/Right/Up/Down</kbd> | Swap windows directionally |
-| <kbd>super + alt + shift + Left/Right/Up/Down</kbd> | Move floating windows directionally |
-| <kbd>super + ctrl + Left/Right/Up/Down</kbd> | Expand windows directionally |
-| <kbd>super + alt + Left/Right/Up/Down</kbd> | Shrink windows directionally |
-| <kbd>super + H/V/Q</kbd> | Split tiles horizontally / vertically / cancel |
-| <kbd>super + ctrl + 1..9</kbd> | Preselect the ratio of tile |
-| <kbd>super + L</kbd> | Toggle Layout (Tiled/Monocle) |
-| <kbd>super + F</kbd> | Toggle fullscreen mode |
-| <kbd>super + Space</kbd> | Toggle between floating and tiled mode |
-| <kbd>super + shift + Space</kbd> | Toggle between pseudo tile and tiled mode |
-| <kbd>super + ctrl + M/X/Y/Z</kbd> | Set node flag, marked/locked/sticky/private |
-| <kbd>alt + Tab</kbd> | Change focus to next window, including floating window |
+| <kbd>super + C</kbd> | Fecha janela focada |
+| <kbd>super + shift + C</kbd> | Mata janela focada |
+| <kbd>super + shift + H</kbd> | Oculta/Desoculta janela |
+| <kbd>super + Left/Right/Up/Down</kbd> | Altera o foco da janela em direção à esquerda/direita/cima/baixo |
+| <kbd>super + shift + Left/Right/Up/Down</kbd> | Troca janelas em direção à esquerda/direita/cima/baixo |
+| <kbd>super + alt + shift + Left/Right/Up/Down</kbd> | Move janelas flutuantes em direção à esquerda/direita/cima/baixo |
+| <kbd>super + ctrl + Left/Right/Up/Down</kbd> | Expandi janelas em direção à esquerda/direita/cima/baixo |
+| <kbd>super + alt + Left/Right/Up/Down</kbd> | Reduzi janelas em direção à esquerda/direita/cima/baixo |
+| <kbd>super + H/V/Q</kbd> | Dividi as janelas horizontalmente / verticalmente / cancelar |
+| <kbd>super + ctrl + 1..9</kbd> | Pré-seleciona a proporção da divisão da janela |
+| <kbd>super + L</kbd> | Alterna layout (Tiled/Monocle) |
+| <kbd>super + F</kbd> | Alterna modo de tela cheia |
+| <kbd>super + Space</kbd> | Alterna entre modo flutuante e modo em mosaico |
+| <kbd>super + shift + Space</kbd> | Alterna entre modo pseudo-mosaico e modo em mosaico |
+| <kbd>super + ctrl + M/X/Y/Z</kbd> | Defini sinal de nó, marcado/bloqueado/pegajoso/privado |
+| <kbd>alt + Tab</kbd> | Alterna foco para a próxima janela, incluindo janelas flutuantes |
 
-### Window Manager
+### Gerenciador de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>ctrl + shift + R</kbd> | Restart bspwm |
-| <kbd>ctrl + shift + Q</kbd> | Quit bspwm |
-| <kbd>super + Escape</kbd> | Reload Keybindings  |
+| <kbd>ctrl + shift + R</kbd> | Reinicia o bspwm |
+| <kbd>ctrl + shift + Q</kbd> | Sai do bspwm |
+| <kbd>super + Escape</kbd> | Recarrega os atalhos de teclado |
 
-### Misc Keys
+### Atalhos Diversos
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>ctrl + alt + V</kbd> | Open vim in terminal |
-| <kbd>ctrl + alt + R</kbd> | Open ranger in terminal |
-| <kbd>ctrl + alt + H</kbd> | Open htop in terminal |
-| <kbd>ctrl + alt + M</kbd> | Open ncmpcpp with album art in terminal |
-| <kbd>ctrl + alt + L</kbd> | Trigger lockscreen |
-| <kbd>super + P</kbd> | Run colorpicker  |
-| <kbd>ctrl + alt + Escape</kbd> | Run xkill |
+| <kbd>ctrl + alt + V</kbd> | Abre vim no terminal |
+| <kbd>ctrl + alt + R</kbd> | Abre ranger no terminal |
+| <kbd>ctrl + alt + H</kbd> | Abre htop no terminal |
+| <kbd>ctrl + alt + M</kbd> | Abre ncmpcpp com arte do álbum no terminal |
+| <kbd>ctrl + alt + L</kbd> | Aciona a tela de bloqueio |
+| <kbd>super + P</kbd> | Executa o seletor de cores |
+| <kbd>ctrl + alt + Escape</kbd> | Executa xkill |
 
-<!-- Themes --------------------------------------- -->
+<!-- Temas --------------------------------------- -->
 
 ## Screenshots
 
 ### Desktop
 
-Here's few screenshots of `Bspwm` desktop. These'll give you an idea of the experience of Bspwm in Archcraft. 
+Aqui estão algumas capturas de tela do `Bspwm`. Elas te darão uma ideia da experiência do Bspwm no Archcraft
 
 |Desktop 1|Desktop 2|Desktop 3|Desktop 4|
 |---|---|---|---|
@@ -349,15 +350,15 @@ Here's few screenshots of `Bspwm` desktop. These'll give you an idea of the expe
 |---|---|---|---|
 |![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/desktop/desktop_13.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/desktop/desktop_14.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/desktop/desktop_15.png)|![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/desktop/desktop_16.png)|
 
-### Themes
+### Temas
 
-To Change the theme/style, Press `SUPER + T` and select the theme/style from the applet.
+Para alterar o tema/estilo, pressione `SUPER + T` e selecione o tema/estilo no applet.
 
 <Tabs>
 
 <TabItem value="wm_1" label="Regular" default>
 
-There are **10 styles** available in regular Bspwm.
+Existem **10 estilos** disponíveis no Bspwm regular.
 
 |Theme 1|Theme 2|Theme 3|Theme 4|Theme 5|
 |---|---|---|---|---|
@@ -371,7 +372,7 @@ There are **10 styles** available in regular Bspwm.
 
 <TabItem value="wm_2" label="Premium" default>
 
-There are **25 styles** (plus infinite auto-generated themes with `pywal`) available for Bspwm premium.
+Existem **25 estilos** (além de temas gerados automaticamente infinitos com o `pywal`) disponíveis para o Bspwm premium.
 
 |Theme 1|Theme 2|Theme 3|Theme 4|Theme 5|
 |---|---|---|---|---|
@@ -395,10 +396,10 @@ There are **25 styles** (plus infinite auto-generated themes with `pywal`) avail
 
 </TabItem>
 
-<TabItem value="wm_3" label="Random" default>
+<TabItem value="wm_3" label="Aleatório" default>
 
-Auto Generated themes with `pywal`. This feature is only available in Bspwm premium. <br/>
-Press `SUPER + T` and select **Random** to apply a random theme.
+Temas gerados automaticamente com o `pywal`. Este recurso está disponível apenas no Bspwm premium. <br/>
+Pressione `SUPER + T` e selecione **Aleatório** para aplicar um tema aleatório.
 
 ![gif](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/bspwm/random/random.gif)
 
@@ -411,27 +412,27 @@ Press `SUPER + T` and select **Random** to apply a random theme.
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar minha configuração para as novas configurações?</b></summary>
 
-When a new version of Archcraft Bspwm get released, And you update the system by `sudo pacman -Syu` or you update the Bspwm package by `sudo pacman -S archcraft-bspwm`, New config files get installed as **bspwm_pacnew_YYYY-MM-DD** in your `~/.config` directory.
+Quando uma nova versão do Archcraft Bspwm for lançada, e você atualizar o sistema com `sudo pacman -Syu` ou atualizar o pacote Bspwm com `sudo pacman -S archcraft-bspwm`, novos arquivos de configuração serão instalados como **bspwm_pacnew_YYYY-MM-DD** no seu diretório `~/.config`.
 
-To use new configs, backup your old `~/.config/bspwm` directory and move `~/.config/bspwm_pacnew_YYYY-MM-DD` to `~/.config/bspwm` and login again.
+Para usar as novas configurações, faça backup do seu antigo diretório `~/.config/bspwm` e mova `~/.config/bspwm_pacnew_YYYY-MM-DD` para `~/.config/bspwm` e faça login novamente.
 
-> For `Bspwm Premium`, download the updated package from ko-fi (for free) and just install it to update to new configs.
-
-</details>
-
-<details>
-<summary><b>How to open apps as root in Bspwm?</b></summary>
-
-To open apps as root, Press `Super + R`, select the app and type your root password to open the app.
+> Para o `Bspwm Premium`, baixe o pacote atualizado do ko-fi (de graça) e apenas instale-o para atualizar as configurações.
 
 </details>
 
 <details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
+<summary><b>Como abrir aplicativos como root no Bspwm?</b></summary>
 
-To change GTK theme, icons and cursor in Bspwm session, Edit `~/.config/bspwm/xsettingsd` file and restart Bspwm to apply the changes.
+Para abrir aplicativos como root, pressione `Super + R`, selecione o aplicativo e digite sua senha de root para abrir o aplicativo.
+
+</details>
+
+<details>
+<summary><b>Como alterar o tema GTK, ícones e cursor?</b></summary>
+
+Para alterar o tema GTK, ícones e cursor na sessão Bspwm, edite o arquivo `~/.config/bspwm/xsettingsd` e reinicie o Bspwm para aplicar as alterações.
 ```bash
 Net/ThemeName "Arc-Dark"
 Net/IconThemeName "Arc-Circle"
@@ -441,14 +442,14 @@ Gtk/CursorThemeName "Qogirr"
 </details>
 
 <details>
-<summary><b>How to manage multiple monitors and resolution in Bspwm?</b></summary>
+<summary><b>Como gerenciar múltiplos monitores e resolução no Bspwm?</b></summary>
 
-If you use multiple monitors with Bspwm window manager, you can manage them as follow:
+Se você usa múltiplos monitores com o Bspwm, pode gerenciá-los da seguinte maneira:
 
-1. Run `launcher` and type either _Manager Monitors_ or _archcraft-randr_ and use the app.
-2. Edit `~/.config/bspwm/bspwmrc` file and use the relevant **monitor_workspaces** function. For example, In the case of two monitors, use `two_monitors_workspaces` function.
+1. Execute o `launcher` e digite _Manager Monitors_ ou _archcraft-randr_ e use o aplicativo.
+2. Edite o arquivo `~/.config/bspwm/bspwmrc` e use a função relevante **monitor_workspaces**. Por exemplo, no caso de dois monitores, use a função `two_monitors_workspaces`.
 ```bash
-70  ## Uncomment only one function according to your needs
+70  ## Descomente apenas uma função de acordo com suas necessidades
 71  #default_workspaces
 72  two_monitors_workspaces
 73  #three_monitors_workspaces
@@ -457,11 +458,11 @@ If you use multiple monitors with Bspwm window manager, you can manage them as f
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Como o Alacritty é um terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares. Você pode fazer funcionar nesses computadores seguindo os seguintes métodos:
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+1. Abra o Alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite as teclas de atalho/script que lançam o Alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+2. Edite o arquivo de desktop **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
 
 </details>

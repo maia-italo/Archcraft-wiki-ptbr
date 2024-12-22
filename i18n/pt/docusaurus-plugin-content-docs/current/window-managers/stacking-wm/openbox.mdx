@@ -437,57 +437,57 @@ Go to `Preferences > Change Style > Current` and click on **✤ Change Colors** 
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar minha config para o nova config?</b></summary>
 
-When a new version of Archcraft Openbox get released, And you update the system by `sudo pacman -Syu` or you update the Openbox package by `sudo pacman -S archcraft-openbox`, New config files get installed as **openbox_pacnew_YYYY-MM-DD** in your `~/.config` directory.
+Quando uma nova versão do Archcraft Openbox for lançada, e você atualizar o sistema com `sudo pacman -Syu` ou atualizar o pacote do Openbox com `sudo pacman -S archcraft-openbox`, novos arquivos de configuração serão instalados como **openbox_pacnew_YYYY-MM-DD** no diretório `~/.config`.
 
-To use new configs, backup your old `~/.config/openbox` directory and move `~/.config/openbox_pacnew_YYYY-MM-DD` to `~/.config/openbox` and login again.
+Para usar os novos configs, faça um backup do seu antigo diretório `~/.config/openbox`, mova `~/.config/openbox_pacnew_YYYY-MM-DD` para `~/.config/openbox` e faça login novamente.
 
-> For `Openbox Premium`, download the updated package from ko-fi (for free) and just install it to update to new configs.
-
-</details>
-
-<details>
-<summary><b>How to open apps as root in openbox?</b></summary>
-
-To open apps as root, Go to openbox menu `Apps As Root`, select the app and type your root password to open the app.
+> Para o `Openbox Premium`, baixe o pacote atualizado do Ko-fi (de graça) e instale-o para atualizar para os novos configs.
 
 </details>
 
 <details>
-<summary><b>How to change desktop theme in openbox?</b></summary>
+<summary><b>Como abrir aplicativos como root no Openbox?</b></summary>
 
-To change desktop theme, Go to openbox menu `Preferences > Change Style` and select the theme you want to use.
-
-</details>
-
-<details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
-
-To change GTK theme, icons and fonts in Openbox session, use `xfce4-appearance-settings` application. <br/>
-You can open this app either via openbox menu `Preferences > Appearance Settings` or type _Appearance_ in app launcher.
-
-To change the openbox theme, use `obconf` app. <br/>
-You can open this app either via openbox menu `Preferences > Openbox > Settings` or type _obconf_ in app launcher.
+Para abrir aplicativos como root, vá ao menu do Openbox `Apps As Root`, selecione o aplicativo e digite sua senha de root para abrir o aplicativo.
 
 </details>
 
 <details>
-<summary><b>How to manage multiple monitors and resolution in Openbox?</b></summary>
+<summary><b>Como mudar o tema de área de trabalho no Openbox?</b></summary>
 
-If you use multiple monitors with Openbox window manager, you can manage them via two methods :
-
-1. Run `launcher` and type either _Manager Monitors_ or _archcraft-randr_ and use the app.
-2. Go to openbox menu `Preferences > Display / Monitor` and use the menu.
+Para mudar o tema da área de trabalho, vá ao menu do Openbox `Preferences > Change Style` e selecione o tema que você deseja usar.
 
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Como mudar o tema GTK, ícones e cursor?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Para mudar o tema GTK, ícones e fontes na sessão Openbox, use o aplicativo `xfce4-appearance-settings`. <br/>
+Você pode abrir esse aplicativo pelo menu do Openbox `Preferences > Appearance Settings` ou digitar _Appearance_ no lançador de aplicativos.
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+Para mudar o tema do Openbox, use o aplicativo `obconf`. <br/>
+Você pode abrir esse aplicativo pelo menu do Openbox `Preferences > Openbox > Settings` ou digitar _obconf_ no lançador de aplicativos.
+
+</details>
+
+<details>
+<summary><b>Como gerenciar múltiplos monitores e resolução no Openbox?</b></summary>
+
+Se você usar múltiplos monitores com o gerenciador de janelas Openbox, pode gerenciá-los de duas maneiras:
+
+1. Execute `launcher` e digite _Manager Monitors_ ou _archcraft-randr_ e use o aplicativo.
+2. Vá ao menu do Openbox `Preferences > Display / Monitor` e use o menu.
+
+</details>
+
+<details>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
+
+Como o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares de computador. Você pode fazê-lo funcionar em tais computadores seguindo estes métodos:
+
+1. Abra o Alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite as teclas de atalho ou o script que abre o Alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
+2. Edite o arquivo desktop **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
 
 </details>

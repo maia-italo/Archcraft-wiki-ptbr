@@ -23,250 +23,252 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-CWM is an X11 window manager with a focus on getting out of your way so you can be productive. It was originally derived from evilwm, but the codebase has since been re-written from scratch.
+CWM é um gerenciador de janelas X11 com foco em não interferir, permitindo que você seja produtivo. Originalmente derivado do evilwm, mas o código foi reescrito do zero desde então.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/cwm/main.png)
 
-<!-- Installation --------------------------------- -->
+<!-- Instalação --------------------------------- -->
 
-## Installation
+Instalação
 
-Once you finish installing Archcraft, **CWM** can be installed on the top of it. It's pre-configured and ready to go. Open a terminal and run the following command to install CWM :
+Após concluir a instalação do Archcraft, CWM pode ser instalado em cima dele. Já vem pré-configurado e pronto para uso. Abra um terminal e execute o seguinte comando para instalar o CWM:
 ```bash
 $ sudo pacman -Sy archcraft-cwm
+```bash
+
+<!-- Configuração -------------------------------- -->
+
+## Configuração
+
+O CWM já vem pré-configurado no Archcraft. Nesta seção, veremos como o gerenciador de janelas CWM é configurado, quais ferramentas e utilitários são usados para fazê-lo parecer e funcionar como um ambiente de desktop completo.
+
+### Estrutura de Configuração
+
+A estrutura de configuração do CWM no Archcraft é algo como isto:
+
 ```
-
-<!-- Configuration -------------------------------- -->
-
-## Configuration
-
-CWM is pre-configured in Archcraft. In this section, We'll see how the CWM window manager is configured, what tools and utilities are used to make it look and work like a complete desktop environment.
-
-### Config Structure
-
-The configuration structure of CWM in Archcraft looks something like this:
-
-```
-/usr/bin/run-cwm   : Autostart programs
-~/.cwmrc           : main cwm config file
-~/.cwm             : cwm config directory
-├── alacritty      : terminal config
-├── scripts        : scripts used for cwm
-├── theme          : desktop theme (polybar, rofi configs) 
-├── dunstrc        : dunst config for notifications
-├── picom.conf     : compositor config
-└── xsettingsd     : gtk themes, icons and fonts config file
+/usr/bin/run-cwm   : Programas que iniciam automaticamente
+~/.cwmrc           : arquivo principal de configuração do cwm
+~/.cwm             : diretório de configuração do cwm
+├── alacritty      : configuração do terminal
+├── scripts        : scripts usados pelo cwm
+├── theme          : tema do desktop (configurações do polybar, rofi)
+├── dunstrc        : configuração do dunst para notificações
+├── picom.conf     : configuração do compositor
+└── xsettingsd     : arquivo de configuração de temas gtk, ícones e fontes
 ```
 
 ### Terminal
 
-**Alacritty** is the default terminal. In the CWM window manager, alacritty is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.cwm/alacritty` directory. These are the following config files you can modify to change the behaviour of your terminal:
+**Alacritty** é o terminal padrão. No gerenciador de janelas CWM, o alacritty é iniciado com um arquivo de configuração alternativo. Se precisar mudar algo, certifique-se de modificar os arquivos de configuração no diretório `~/.cwm/alacritty`. Abaixo estão os arquivos de configuração que você pode modificar para alterar o comportamento do seu terminal:
 
-**`~/.cwm/alacritty/alacritty.toml`** : Main configuration file <br/>
-**`~/.cwm/alacritty/colors.toml`** : Colors configurations <br/>
-**`~/.cwm/alacritty/fonts.toml`** : Fonts configurations
+**`~/.cwm/alacritty/alacritty.toml`** : Arquivo principal de configuração  
+**`~/.cwm/alacritty/colors.toml`** : Configurações de cores  
+**`~/.cwm/alacritty/fonts.toml`** : Configurações de fontes
 
-> If you need any help with alacritty config, run : `man 5 alacritty` in terminal.
+> Se precisar de ajuda com a configuração do alacritty, execute: `man 5 alacritty` no terminal.
 
-### Notification
+### Notificação
 
-**Dunst** is used as a notification daemon for notifications in CWM. In the CWM window manager, dunst is launched with an alternative config file, which is `~/.cwm/dunstrc`. So, If you need to modify anything, make sure you edit this file.
+**Dunst** é usado como o daemon de notificações no CWM. No gerenciador de janelas CWM, o dunst é iniciado com um arquivo de configuração alternativo, que é o `~/.cwm/dunstrc`. Portanto, se precisar modificar algo, certifique-se de editar este arquivo.
 
-> If you need any help with dunst config, run : `man 5 dunst` in terminal.
+> Se precisar de ajuda com a configuração do dunst, execute: `man 5 dunst` no terminal.
 
-### Wallpaper
+### Papel de Parede
 
-**hsetroot** sets the wallpaper in the CWM. If you want to change the wallpaper, Edit `/usr/bin/run-cwm` script and add the path to your wallpaper :
+**hsetroot** define o papel de parede no CWM. Se quiser mudar o papel de parede, edite o script `/usr/bin/run-cwm` e adicione o caminho do seu papel de parede:
 ```bash
-# Restore wallpaper
-hsetroot -cover '/path/to/your/wallpaper'
+# Restaurar papel de parede
+hsetroot -cover '/caminho/para/seu/papel/de/parede'
+```
 ```
 
-### Statusbar
+### Barra de Status
 
-**Polybar** is used as the statusbar in Archcraft's CWM window manager.
+**Polybar** é usado como a barra de status no gerenciador de janelas CWM do Archcraft.
 
-The configurations for polybar can be found inside the _theme_ directory directory of CWM `~/.cwm/theme`
+As configurações do polybar podem ser encontradas dentro do diretório _theme_ do CWM em `~/.cwm/theme`.
 
-If you want to modify the **polybar** settings, or perhaps want to add/remove modules, then you need to edit the following files :
+Se você quiser modificar as configurações do **polybar**, ou talvez adicionar/remover módulos, será necessário editar os seguintes arquivos:
 
-**`~/.cwm/theme/polybar/config.ini`** : Main config file <br/>
-**`~/.cwm/theme/polybar/colors.ini`** : Colors config file <br/>
-**`~/.cwm/theme/polybar/modules.ini`** : Modules config file
+**`~/.cwm/theme/polybar/config.ini`** : Arquivo principal de configuração  
+**`~/.cwm/theme/polybar/colors.ini`** : Arquivo de configuração das cores  
+**`~/.cwm/theme/polybar/modules.ini`** : Arquivo de configuração dos módulos
 
-> If you need any help with polybar config, visit : [polybar wiki](https://github.com/polybar/polybar/wiki)
+> Se precisar de ajuda com a configuração do polybar, visite: [polybar wiki](https://github.com/polybar/polybar/wiki)
 
-### Launchers and Applets
+### Lançadores e Applets
 
-**Rofi** is used for application launchers, command runner and various applets. To modify the rofi config, edit `~/.config/rofi/config.rasi` file.
+**Rofi** é usado para lançar aplicativos, executar de comandos e vários applets. Para modificar a configuração do rofi, edite o arquivo `~/.config/rofi/config.rasi`.
 
-> If you need any help with rofi config, run : `man rofi` in terminal.
+> Se precisar de ajuda com a configuração do rofi, execute: `man rofi` no terminal.
 
-The scripts for rofi that are used in CWM can be found it `~/.cwm/scripts` directory. These are the following scripts that uses rofi to provide the launchers and applets in CWM :
+Os scripts do rofi usados no CWM podem ser encontrados no diretório `~/.cwm/scripts`. Abaixo estão os scripts que utilizam o rofi para fornecer lançadores e applets no CWM:
 
-**`rofi_askpass`** : rofi based `sudo` frontend to get root password <br/>
-**`rofi_asroot`** : applet to open apps as root <br/>
-**`rofi_bluetooth`** : bluetooth applet to quickly connect to BT devices <br/>
-**`rofi_launcher`** : an application launcher, cmd runner, file manager and task manager  <br/>
-**`rofi_music`** : music applet, that controls MPD with `mpc` <br/>
-**`rofi_powermenu`** : power menu, with confirmation dialog <br/>
-**`rofi_runner`** : quickly lets you run a command <br/>
-**`rofi_screenshot`** : screenshot applet that works with maim <br/>
+**`rofi_askpass`** : frontend baseado em rofi para `sudo`, para obter a senha de root  
+**`rofi_asroot`** : applet para abrir aplicativos como root  
+**`rofi_bluetooth`** : applet de bluetooth para conectar rapidamente a dispositivos BT  
+**`rofi_launcher`** : lançador de aplicativos, executador de comandos, gerenciador de arquivos e gerenciador de tarefas  
+**`rofi_music`** : applet de música, que controla o MPD com `mpc`  
+**`rofi_powermenu`** : menu de energia, com caixa de confirmação  
+**`rofi_runner`** : permite executar rapidamente um comando  
+**`rofi_screenshot`** : applet de captura de tela que funciona com maim  
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts above.
+Se quiser modificar qualquer applet ou talvez estender a funcionalidade de algum, basta editar os scripts acima.
 
-The configuration of each script can be found inside the _theme_ directory of CWM `~/.cwm/theme`
+A configuração de cada script pode ser encontrada dentro do diretório _theme_ do CWM em `~/.cwm/theme`.
 
-Let's say you want to modify the looks of **launcher**, then you need to edit the `~/.cwm/theme/rofi/launcher.rasi` file. Same goes for every other applet, Edit the respective file in the same directory.
+Digamos que você queira modificar a aparência do **lançador**, então será necessário editar o arquivo `~/.cwm/theme/rofi/launcher.rasi`. O mesmo vale para os outros applets, edite o arquivo respectivo no mesmo diretório.
 
-> If you need any help with rofi theming, run : `man rofi-theme` in terminal.
+> Se precisar de ajuda com a personalização do rofi, execute: `man rofi-theme` no terminal.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.cwm/theme/rofi/shared/colors.rasi` and `~/.cwm/theme/rofi/shared/fonts.rasi` files.
+Para alterar as cores e fontes dos lançadores e applets, edite os arquivos `~/.cwm/theme/rofi/shared/colors.rasi` e `~/.cwm/theme/rofi/shared/fonts.rasi`.
 
 ### Compositor
 
-**Picom** is used for compositing. It's a lightweight compositor with shadowing, advanced blurring and fading. In CWM, picom is launched with an alternative config file, which is `~/.cwm/picom.conf`. 
+**Picom** é usado para composição. É um compositor leve com sombreamento, desfoque avançado e desvanecimento. No CWM, o picom é iniciado com um arquivo de configuração alternativo, que é o `~/.cwm/picom.conf`.
 
-If you need to change anything related to picom, Edit this picom config file.
+Se precisar alterar algo relacionado ao picom, edite este arquivo de configuração do picom.
 
-> If you need any help with picom config, check the picom's default config file in `/etc/xdg/picom.conf`
+> Se precisar de ajuda com a configuração do picom, consulte o arquivo de configuração padrão do picom em `/etc/xdg/picom.conf`.
 
 :::info
 
-If you're having screen-tearing issues, using `glx` backend can solve this issue. <br/>
-If you're facing lagging, hangs and freezes, try switching between `xrender` and `glx` backend.  
+Se você estiver enfrentando problemas de "screen tearing", usar o backend `glx` pode resolver esse problema.  
+Se estiver enfrentando lentidão, travamentos e congelamentos, tente alternar entre os backends `xrender` e `glx`.
 
 :::
 
-### Window Manager
+### Gerenciador de Janelas
 
-The configuration of CWM is available in your home directory. To configure CWM window manager, this is the main file that is used :
+A configuração do CWM está disponível no seu diretório home. Para configurar o gerenciador de janelas CWM, este é o arquivo principal usado:
 
-**`~/.cwmrc`** : main configuration file responsible for determining the behaviour and settings of the overall session. Edit this file to configure keybindings, colors, menu and cwm appearance. <br/>
+**`~/.cwmrc`** : arquivo principal de configuração responsável por determinar o comportamento e as configurações da sessão como um todo. Edite este arquivo para configurar as combinações de teclas, cores, menus e aparência do cwm.
 
-> If you need any help with cwm configuration, run : `man cwm` and `man cwmrc` in terminal.
+> Se precisar de ajuda com a configuração do cwm, execute: `man cwm` e `man cwmrc` no terminal.
 
-<!-- Keybindings ---------------------------------- -->
+<!-- Atalhos de teclado ---------------------------------- -->
 
-## Keybindings
+## Atalhos de teclado
 
-Here's a list of some important keybinds you need to know for operating CWM easily. If you want to view, modify or add new keybinds, Edit `~/.cwmrc` file.
+Aqui está uma lista de alguns atalhos de teclado importantes que você precisa saber para operar o CWM de forma fácil. Se quiser visualizar, modificar ou adicionar novos atalhos, edite o arquivo `~/.cwmrc`.
 
-### Applications
+### Aplicações
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + Return</kbd> | Open terminal (alacritty) |
-| <kbd>super + shift + Return</kbd> | Open fullscreen terminal |
-| <kbd>super + F</kbd> | Open file manager (thunar) |
-| <kbd>super + E</kbd> | Open text editor (geany) |
-| <kbd>super + W</kbd> | Open web browser (firefox) |
+| <kbd>super + Return</kbd> | Abre terminal (alacritty) |
+| <kbd>super + shift + Return</kbd> | Abre terminal em tela cheia |
+| <kbd>super + F</kbd> | Abre gerenciador de arquivos (thunar) |
+| <kbd>super + E</kbd> | Abre editor de texto (geany) |
+| <kbd>super + W</kbd> | Abre navegador web (firefox) |
 
-### Menu and Applets
+### Menu e Applets
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super</kbd> | Open application launcher |
-| <kbd>alt + F1</kbd> | Open application launcher |
-| <kbd>alt + F2</kbd> | Open command runner |
-| <kbd>super + N</kbd> | Open network manager applet |
-| <kbd>super + B</kbd> | Open bluetooth applet |
-| <kbd>super + M</kbd> | Open music applet |
-| <kbd>super + X</kbd> | Open powermenu applet |
-| <kbd>super + S</kbd> | Open screenshots applet |
-| <kbd>super + R</kbd> | Open apps as root applet |
-| <kbd>alt + ctrl + W</kbd> | Launch window search menu |
-| <kbd>alt + ctrl + A</kbd> | Launch application search menu |
-| <kbd>alt + ctrl + G</kbd> | Launch group search menu |
+| <kbd>super</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F1</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F2</kbd> | Abre executador de comandos |
+| <kbd>super + N</kbd> | Abre applet de gerenciador de rede |
+| <kbd>super + B</kbd> | Abre applet de bluetooth |
+| <kbd>super + M</kbd> | Abre applet de música |
+| <kbd>super + X</kbd> | Abre applet de menu de energia |
+| <kbd>super + S</kbd> | Abre applet de captura de tela |
+| <kbd>super + R</kbd> | Abre applet para abrir aplicativos como root |
+| <kbd>alt + ctrl + W</kbd> | Inicia menu de busca de janelas |
+| <kbd>alt + ctrl + A</kbd> | Inicia menu de busca de aplicativos |
+| <kbd>alt + ctrl + G</kbd> | Inicia menu de busca de grupos |
 
-### Hardware Keys
+### Atalhos de Hardware
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>Print</kbd> | Take screenshot |
-| <kbd>alt + Print</kbd> | Take screenshot in 5 seconds delay |
-| <kbd>shift + Print</kbd> | Take screenshot in 10 seconds delay |
-| <kbd>ctrl + Print</kbd> | Take screenshot of currently focused window |
-| <kbd>super + Print</kbd> | Take screenshot of selected area |
-| <kbd>XF86AudioRaiseVolume</kbd> | Increase volume |
-| <kbd>XF86AudioLowerVolume</kbd> | Decrease volume |
-| <kbd>XF86AudioMute</kbd> | Toggle mute speakers |
-| <kbd>XF86AudioMicMute</kbd> | Toggle mute microphone |
-| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
-| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>Print</kbd> | Tira captura de tela |
+| <kbd>alt + Print</kbd> | Tira captura de tela com atraso de 5 segundos |
+| <kbd>shift + Print</kbd> | Tira captura de tela com atraso de 10 segundos |
+| <kbd>ctrl + Print</kbd> | Tira captura de tela da janela atualmente focada |
+| <kbd>super + Print</kbd> | Tira captura de tela da área selecionada |
+| <kbd>XF86AudioRaiseVolume</kbd> | Aumenta o volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Diminui o volume |
+| <kbd>XF86AudioMute</kbd> | Alterna mudo nos alto-falantes |
+| <kbd>XF86AudioMicMute</kbd> | Alterna mudo no microfone |
+| <kbd>XF86MonBrightnessUp</kbd> | Aumenta o brilho da tela |
+| <kbd>XF86MonBrightnessDown</kbd> | Diminui o brilho da tela |
 
-### Groups
-| Keys | Action |
+### Grupos
+
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + NUM</kbd> | Show only group NUM, where NUM is 1-9, hiding other groups |
-| <kbd>super + shift + NUM</kbd> | Hide current window from display and move to group NUM, where NUM is 1-9 |
-| <kbd>super + alt + NUM</kbd> | Toggle visibility of group NUM, where NUM is 1-9 |
-| <kbd>super + ctrl + NUM</kbd> | Close all windows in group NUM, where NUM is 1-9 |
-| <kbd>super + shift + B</kbd> | Show only the previously active group |
-| <kbd>super + shift + A</kbd> | Toggle visibility of all groups |
-| <kbd>super + shift + G</kbd> | Toggle group membership of current window |
-| <kbd>ctrl + alt + Right/Left</kbd> | Forward/Reverse cycle through groups |
+| <kbd>super + NUM</kbd> | Mostra apenas o grupo NUM, onde NUM é de 1 a 9, escondendo outros grupos |
+| <kbd>super + shift + NUM</kbd> | Oculta a janela atual da exibição e mover para o grupo NUM, onde NUM é de 1 a 9 |
+| <kbd>super + alt + NUM</kbd> | Alterna visibilidade do grupo NUM, onde NUM é de 1 a 9 |
+| <kbd>super + ctrl + NUM</kbd> | Fecha todas as janelas no grupo NUM, onde NUM é de 1 a 9 |
+| <kbd>super + shift + B</kbd> | Mostra apenas o grupo previamente ativo |
+| <kbd>super + shift + A</kbd> | Alterna visibilidade de todos os grupos |
+| <kbd>super + shift + G</kbd> | Alterna a associação de grupo da janela atual |
+| <kbd>ctrl + alt + Right/Left</kbd> | Avança/Recua pelo ciclo de grupos |
 
-### Window Management
+### Gerenciamento de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + C/Q</kbd> | Close focused client |
-| <kbd>super + Tab</kbd> | Forward/Reverse cycle through windows |
-| <kbd>alt + Tab</kbd> | Forward/Reverse cycle through windows in current group |
-| <kbd>super + I</kbd> | Hide current window |
-| <kbd>super + T</kbd> | Freeze current window geometry |
-| <kbd>super + shift + R</kbd> | Label current window |
-| <kbd>super + O</kbd> | Stick current window to all groups |
-| <kbd>super + Space</kbd> | Fullscreen current window |
-| <kbd>super + shift + Space</kbd> | Maximize current window |
-| <kbd>ctrl + alt + V</kbd> | Vertically maximize current window |
-| <kbd>ctrl + alt + H</kbd> | Horizontally maximize current window |
-| <kbd>ctrl + alt + shift + V</kbd> | Vertically maximize current window placing it in left of the screen |
-| <kbd>ctrl + alt + shift + H</kbd> | Horizontally maximize current window placing it at top of the screen |
-| <kbd>super + shift + Left/Right/Up/Down</kbd> | Move window by 10px directionally |
-| <kbd>super + shift + H/J/K/L</kbd> | Move window by 100px directionally |
-| <kbd>super + ctrl + Left/Right/Up/Down</kbd> | Resize window by 10px directionally |
-| <kbd>super + ctrl + H/J/K/L</kbd> | Resize window by 100px directionally |
-| <kbd>super + Left/Right/Up/Down</kbd> | Snap window to the screen edges |
-| <kbd>super + H/J/K/L</kbd> | Snap window to the screen edges |
+| <kbd>super + C/Q</kbd> | Fecha a janela focada |
+| <kbd>super + Tab</kbd> | Avança/Recua pelo ciclo de janelas |
+| <kbd>alt + Tab</kbd> | Avança/Recua pelo ciclo de janelas no grupo atual |
+| <kbd>super + I</kbd> | Oculta a janela atual |
+| <kbd>super + T</kbd> | Congela a geometria da janela atual |
+| <kbd>super + shift + R</kbd> | Rotula a janela atual |
+| <kbd>super + O</kbd> | Fixa a janela atual em todos os grupos |
+| <kbd>super + Space</kbd> | Coloca a janela atual em tela cheia |
+| <kbd>super + shift + Space</kbd> | Maximiza a janela atual |
+| <kbd>ctrl + alt + V</kbd> | Maximiza verticalmente a janela atual |
+| <kbd>ctrl + alt + H</kbd> | Maximiza horizontalmente a janela atual |
+| <kbd>ctrl + alt + shift + V</kbd> | Maximiza verticalmente a janela atual, colocando-a à esquerda da tela |
+| <kbd>ctrl + alt + shift + H</kbd> | Maximiza horizontalmente a janela atual, colocando-a no topo da tela |
+| <kbd>super + shift + Left/Right/Up/Down</kbd> | Move a janela em 10px na direção escolhida |
+| <kbd>super + shift + H/J/K/L</kbd> | Move a janela em 100px na direção escolhida |
+| <kbd>super + ctrl + Left/Right/Up/Down</kbd> | Redimensiona a janela em 10px na direção escolhida |
+| <kbd>super + ctrl + H/J/K/L</kbd> | Redimensiona a janela em 100px na direção escolhida |
+| <kbd>super + Left/Right/Up/Down</kbd> | Ajusta a janela às bordas da tela |
+| <kbd>super + H/J/K/L</kbd> | Ajusta a janela às bordas da tela |
 
-### Window Manager
+### Gerenciador de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + ctrl + R</kbd> | Restart CWM |
-| <kbd>super + ctrl + Q</kbd> | Quit CWM |
+| <kbd>super + ctrl + R</kbd> | Reinicia o CWM |
+| <kbd>super + ctrl + Q</kbd> | Sai do CWM |
 
-### Misc Keys
+### Atalhos Diversas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>ctrl + alt + M</kbd> | Run ncmpcpp with album art |
-| <kbd>ctrl + alt + L</kbd> | Trigger lockscreen |
-| <kbd>super + P</kbd> | Run colorpicker  |
+| <kbd>ctrl + alt + M</kbd> | Executa ncmpcpp com arte do álbum |
+| <kbd>ctrl + alt + L</kbd> | Aciona tela de bloqueio |
+| <kbd>super + P</kbd> | Executa seletor de cores |
 
-## Mouse Bindings
+## Atalhos do Mouse
 
-| Button | Action |
+| Botão | Ação |
 | --- | --- |
-| <kbd>alt + Button_1</kbd> | Raise current window |
-| <kbd>alt + Button_3</kbd> | Lower current window |
-| <kbd>alt + Button_2</kbd> | Hide current window |
-| <kbd>super + Button_1</kbd> | Move current window |
-| <kbd>super + Button_3</kbd> | Resize current window |
-| <kbd>super + Button_2</kbd> | Freeze current window geometry |
-| <kbd>Button_1</kbd> | Launch window search menu |
-| <kbd>Button_3</kbd> | Launch application search menu |
-| <kbd>Button_2</kbd> | Launch group search menu |
+| <kbd>alt + Button_1</kbd> | Eleva a janela atual |
+| <kbd>alt + Button_3</kbd> | Rebaixa a janela atual |
+| <kbd>alt + Button_2</kbd> | Oculta a janela atual |
+| <kbd>super + Button_1</kbd> | Move a janela atual |
+| <kbd>super + Button_3</kbd> | Redimensiona a janela atual |
+| <kbd>super + Button_2</kbd> | Congela a geometria da janela atual |
+| <kbd>Button_1</kbd> | Inicia menu de busca de janelas |
+| <kbd>Button_3</kbd> | Inicia menu de busca de aplicativos |
+| <kbd>Button_2</kbd> | Inicia menu de busca de grupos |
 
-<!-- Themes --------------------------------------- -->
+<!-- Temas --------------------------------------- -->
 
 ## Screenshots
 
-Here's few screenshots of `CWM` desktop. These'll give you an idea of the experience of CWM in Archcraft. 
+Aqui estão algumas capturas de tela do `CWM`. Elas te darão uma ideia da experiência do CWM no Archcraft.
 
 |Desktop 1|Desktop 2|Desktop 3|Desktop 4|
 |---|---|---|---|
@@ -285,26 +287,28 @@ Here's few screenshots of `CWM` desktop. These'll give you an idea of the experi
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar minha configuração para as novas configurações?</b></summary>
 
-When a new version of Archcraft CWM get released, And you update the system by `sudo pacman -Syu` or you update the CWM package by `sudo pacman -S archcraft-cwm`, New config files get installed as **~/.cwm_pacnew_YYYY-MM-DD** and **~/.cwmrc_pacnew_YYYY-MM-DD** in your home directory.
+Quando uma nova versão do Archcraft CWM é lançada, e você atualiza o sistema com `sudo pacman -Syu` ou atualiza o pacote CWM com `sudo pacman -S archcraft-cwm`, novos arquivos de configuração são instalados como **~/.cwm_pacnew_YYYY-MM-DD** e **~/.cwmrc_pacnew_YYYY-MM-DD** no seu diretório home.
 
-To use new configs : 
-- backup your old `~/.cwm` directory and `~/.cwmrc` file 
-- move `~/.cwm_pacnew_YYYY-MM-DD` to `~/.cwm`
-- move `~/.cwmrc_pacnew_YYYY-MM-DD` to `~/.cwmrc`
-- logout and login again.
+Para usar as novas configurações:
+- Faça backup do seu antigo diretório `~/.cwm` e do arquivo `~/.cwmrc`
+- Mova `~/.cwm_pacnew_YYYY-MM-DD` para `~/.cwm`
+- Mova `~/.cwmrc_pacnew_YYYY-MM-DD` para `~/.cwmrc`
+- Faça logout e login novamente.
 
 </details>
 
 <details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
+<summary><b>Como alterar o tema GTK, ícones e cursor?</b></summary>
 
-To change GTK theme, icons and cursor in CWM session, Edit `~/.cwm/xsettingsd` file and restart CWM to apply the changes.
+Para alterar o tema GTK, ícones e cursor na sessão CWM, edite o arquivo `~/.cwm/xsettingsd` e reinicie o CWM para aplicar as mudanças.
+
 ```bash
 Net/ThemeName "Arc-Dark"
 Net/IconThemeName "Arc-Circle"
 Gtk/CursorThemeName "Future"
+```
 ```
 
 </details>
@@ -317,11 +321,11 @@ If you use multiple monitors with CWM window manager, you can manage them by run
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Como o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares de computador. Você pode fazê-lo funcionar em tais computadores seguindo estes métodos:
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+1. Abra o alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite as configurações de teclas/script que abrem o alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
+2. Edite o arquivo de desktop **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
 
 </details>
