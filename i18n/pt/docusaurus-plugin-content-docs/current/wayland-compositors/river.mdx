@@ -508,7 +508,7 @@ local outputs = {
 <details>
 <summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Desde quando o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares. Você pode fazê-lo funcionar nestes computadores com os seguintes métodos:
+Como o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares. Você pode fazê-lo funcionar nestes computadores com os seguintes métodos:
 
 1. Abra o alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite o atalho/script que lança o alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
 2. Edite o arquivo **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`

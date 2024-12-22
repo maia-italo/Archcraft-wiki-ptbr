@@ -23,226 +23,227 @@ export const Highlight = ({children, color}) => (
   </span>
 );
 
-<!-- Add your stuff after this -------------------- -->
+<!-- Adicione suas coisas depois disso -------------------- -->
 
-Bite-sized window manager written in C. It is controlled via a command-line client, allowing users to control windows via a hotkey daemon such as sxhkd or expand functionality via shell scripts. It provides extensible theming options with double borders, title bars, and window text. Berry places new windows in unoccupied spaces and supports virtual desktops.
+Gerenciador de janelas compacto escrito em C. Ele é controlado por meio de um cliente de linha de comando, permitindo aos usuários controlar as janelas via um daemon de teclas de atalho como o sxhkd ou expandir a funcionalidade por meio de shell scripts. Oferece opções de personalização extensíveis com bordas duplas, barras de título e texto da janela. O Berry coloca novas janelas em espaços desocupados e oferece suporte a desktops virtuais.
 
 ![img](https://raw.githubusercontent.com/archcraft-os/misc-files/main/screenshots/berry/main.png)
 
-<!-- Installation --------------------------------- -->
+<!-- Instalação --------------------------------- -->
 
-## Installation
+## Instalação
 
-Once you finish installing Archcraft, **Berry** can be installed on the top of it. It's pre-configured and ready to go. Open a terminal and run the following command to install Berry :
+Após concluir a instalação do Archcraft, o **Berry** pode ser instalado em cima dele. Ele já vem pré-configurado e pronto para uso. Abra um terminal e execute o seguinte comando para instalar o Berry:
 ```bash
 $ sudo pacman -Sy archcraft-berry
 ```
 
-<!-- Configuration -------------------------------- -->
+<!-- Configuração -------------------------------- -->
 
-## Configuration
+## Configuração
 
-Berry is pre-configured in Archcraft. In this section, We'll see how the Berry window manager is configured, what tools and utilities are used to make it look and work like a complete desktop environment.
+O Berry já vem pré-configurado no Archcraft. Nesta seção, veremos como o gerenciador de janelas Berry é configurado, quais ferramentas e utilitários são usados para fazer com que ele funcione como um ambiente de desktop completo.
 
-### Config Structure
+### Estrutura de Configuração
 
-The configuration structure of Berry in Archcraft looks something like this:
+A estrutura de configuração do Berry no Archcraft é algo como:
 
 ```
 ~/.config
-└── berry           : berry config directory
-    ├── alacritty   : terminal config
-    ├── scripts     : scripts used for berry
-    ├── theme       : desktop theme (polybar, rofi configs) 
-    ├── autostart   : main berry config file
-    ├── dunstrc     : dunst config for notifications
-    ├── picom.conf  : compositor config
-    ├── sxhkdrc     : keybindings config
-    └── xsettingsd  : gtk themes, icons and fonts config file
+└── berry           : diretório de configuração do berry
+    ├── alacritty   : configuração do terminal
+    ├── scripts     : scripts usados pelo berry
+    ├── theme       : tema de desktop (configurações do polybar, rofi)
+    ├── autostart   : arquivo principal de configuração do berry
+    ├── dunstrc     : configuração do dunst para notificações
+    ├── picom.conf  : configuração do compositor
+    ├── sxhkdrc     : configuração de atalhos de teclado
+    └── xsettingsd  : arquivo de configuração de temas gtk, ícones e fontes
 ```
 
 ### Terminal
 
-**Alacritty** is the default terminal. In the Berry window manager, alacritty is launched with an alternative config file. If you need to change anything, make sure you modify the config files in `~/.config/berry/alacritty` directory. These are the following config files you can modify to change the behaviour of your terminal:
+**Alacritty** é o terminal padrão. No gerenciador de janelas Berry, o Alacritty é iniciado com um arquivo de configuração alternativo. Se precisar alterar algo, certifique-se de modificar os arquivos de configuração no diretório `~/.config/berry/alacritty`. Estes são os arquivos de configuração que você pode modificar para alterar o comportamento do seu terminal:
 
-**`~/.config/berry/alacritty/alacritty.toml`** : Main configuration file <br/>
-**`~/.config/berry/alacritty/colors.toml`** : Colors configurations <br/>
-**`~/.config/berry/alacritty/fonts.toml`** : Fonts configurations
+**`~/.config/berry/alacritty/alacritty.toml`** : Arquivo de configuração principal <br/>
+**`~/.config/berry/alacritty/colors.toml`** : Configurações de cores <br/>
+**`~/.config/berry/alacritty/fonts.toml`** : Configurações de fontes
 
-> If you need any help with alacritty config, run : `man 5 alacritty` in terminal.
+> Se precisar de ajuda com a configuração do Alacritty, execute: `man 5 alacritty` no terminal.
 
-### Notification
+### Notificação
 
-**Dunst** is used as a notification daemon for notifications in Berry. In the Berry window manager, dunst is launched with an alternative config file, which is `~/.config/berry/dunstrc`. So, If you need to modify anything, make sure you edit this file.
+**Dunst** é usado como um daemon de notificações no Berry. No gerenciador de janelas Berry, o Dunst é iniciado com um arquivo de configuração alternativo, que é o `~/.config/berry/dunstrc`. Portanto, se precisar modificar algo, certifique-se de editar este arquivo.
 
-> If you need any help with dunst config, run : `man 5 dunst` in terminal.
+> Se precisar de ajuda com a configuração do Dunst, execute: `man 5 dunst` no terminal.
 
-### Wallpaper
+### Papel de parede
 
-**hsetroot** sets the wallpaper in the Berry. If you want to change the wallpaper, Edit `~/.config/berry/scripts/berry_autostart` script and add the path to your wallpaper :
+**hsetroot** define o papel de parede no Berry. Se você deseja mudar o papel de parede, edite o script `~/.config/berry/scripts/berry_autostart` e adicione o caminho para o seu papel de parede:
 ```bash
-# Restore wallpaper
-hsetroot -cover '/path/to/your/wallpaper'
+# Restaurar o papel de parede
+hsetroot -cover '/caminho/para/seu/papel/de/parede'
 ```
 
-### Statusbar
+### Barra de Status
 
-**Polybar** is used as the statusbar in Archcraft's Berry window manager.
+**Polybar** é usado como a barra de status no gerenciador de janelas Berry do Archcraft.
 
-The configurations for polybar can be found inside the _theme_ directory directory of Berry `~/.config/berry/theme`
+As configurações do Polybar podem ser encontradas dentro do diretório _theme_ do Berry, em `~/.config/berry/theme`.
 
-If you want to modify the **polybar** settings, or perhaps want to add/remove modules, then you need to edit the following files :
+Se você quiser modificar as configurações do **polybar**, ou talvez adicionar/remover módulos, você precisará editar os seguintes arquivos:
 
-**`~/.config/berry/theme/polybar/config.ini`** : Main config file <br/>
-**`~/.config/berry/theme/polybar/colors.ini`** : Colors config file <br/>
-**`~/.config/berry/theme/polybar/modules.ini`** : Modules config file
+**`~/.config/berry/theme/polybar/config.ini`** : Arquivo de configuração principal <br/>
+**`~/.config/berry/theme/polybar/colors.ini`** : Arquivo de configuração de cores <br/>
+**`~/.config/berry/theme/polybar/modules.ini`** : Arquivo de configuração de módulos
 
-> If you need any help with polybar config, visit : [polybar wiki](https://github.com/polybar/polybar/wiki)
+> Se precisar de ajuda com a configuração do Polybar, visite: [wiki do Polybar](https://github.com/polybar/polybar/wiki)
 
-### Launchers and Applets
+### Lançadores e Applets
 
-**Rofi** is used for application launchers, command runner and various applets. To modify the rofi config, edit `~/.config/rofi/config.rasi` file.
+**Rofi** é usado para iniciadores de aplicativos, executores de comandos e vários applets. Para modificar a configuração do rofi, edite o arquivo `~/.config/rofi/config.rasi`.
 
-> If you need any help with rofi config, run : `man rofi` in terminal.
+> Se precisar de ajuda com a configuração do rofi, execute: `man rofi` no terminal.
 
-The scripts for rofi that are used in Berry can be found it `~/.config/berry/scripts` directory. These are the following scripts that uses rofi to provide the launchers and applets in Berry :
+Os scripts para o rofi usados no Berry podem ser encontrados no diretório `~/.config/berry/scripts`. Estes são os seguintes scripts que utilizam o rofi para fornecer os iniciadores e applets no Berry:
 
-**`rofi_askpass`** : rofi based `sudo` frontend to get root password <br/>
-**`rofi_asroot`** : applet to open apps as root <br/>
-**`rofi_bluetooth`** : bluetooth applet to quickly connect to BT devices <br/>
-**`rofi_launcher`** : an application launcher, cmd runner, file manager and task manager  <br/>
-**`rofi_music`** : music applet, that controls MPD with `mpc` <br/>
-**`rofi_powermenu`** : power menu, with confirmation dialog <br/>
-**`rofi_runner`** : quickly lets you run a command <br/>
-**`rofi_screenshot`** : screenshot applet that works with maim <br/>
-**`rofi_windows`** : applet to manage opened windows <br/>
+**`rofi_askpass`** : Frontend baseado em rofi para `sudo`, para obter a senha de root <br/>
+**`rofi_asroot`** : Applet para abrir aplicativos como root <br/>
+**`rofi_bluetooth`** : Applet de bluetooth para conectar rapidamente aos dispositivos BT <br/>
+**`rofi_launcher`** : Iniciador de aplicativos, executor de comandos, gerenciador de arquivos e gerenciador de tarefas  <br/>
+**`rofi_music`** : Applet de música, que controla o MPD com `mpc` <br/>
+**`rofi_powermenu`** : Menu de energia, com diálogo de confirmação <br/>
+**`rofi_runner`** : Permite executar rapidamente um comando <br/>
+**`rofi_screenshot`** : Applet de captura de tela que funciona com maim <br/>
+**`rofi_windows`** : Applet para gerenciar as janelas abertas <br/>
 
-If you want to modify any applet or perhaps want to extend the functionality of the applet, just edit these scripts above.
+Se você quiser modificar qualquer applet ou talvez expandir a funcionalidade do applet, basta editar os scripts acima.
 
-The configuration of each script can be found inside the _theme_ directory of Berry `~/.config/berry/theme`
+A configuração de cada script pode ser encontrada dentro do diretório _theme_ do Berry `~/.config/berry/theme`.
 
-Let's say you want to modify the looks of **launcher**, then you need to edit the `~/.config/berry/theme/rofi/launcher.rasi` file. Same goes for every other applet, Edit the respective file in the same directory.
+Suponha que você queira modificar a aparência do **iniciador**, então você precisa editar o arquivo `~/.config/berry/theme/rofi/launcher.rasi`. O mesmo vale para qualquer outro applet, edite o arquivo respectivo no mesmo diretório.
 
-> If you need any help with rofi theming, run : `man rofi-theme` in terminal.
+> Se precisar de ajuda com a personalização do rofi, execute: `man rofi-theme` no terminal.
 
-To change the colors and fonts of the launchers and applets, Edit the `~/.config/berry/theme/rofi/shared/colors.rasi` and `~/.config/berry/theme/rofi/shared/fonts.rasi` files.
+Para mudar as cores e fontes dos iniciadores e applets, edite os arquivos `~/.config/berry/theme/rofi/shared/colors.rasi` e `~/.config/berry/theme/rofi/shared/fonts.rasi`.
 
 ### Compositor
 
-**Picom** is used for compositing. It's a lightweight compositor with shadowing, advanced blurring and fading. In Berry, picom is launched with an alternative config file, which is `~/.config/berry/picom.conf`. 
+**Picom** é usado para composição. É um compositor leve com sombreamento, desfoque avançado e transições de fade. No Berry, o picom é iniciado com um arquivo de configuração alternativo, que é o `~/.config/berry/picom.conf`.
 
-If you need to change anything related to picom, Edit this picom config file.
+Se você precisar mudar algo relacionado ao picom, edite este arquivo de configuração do picom.
 
-> If you need any help with picom config, check the picom's default config file in `/etc/xdg/picom.conf`
+> Se precisar de ajuda com a configuração do picom, consulte o arquivo de configuração padrão do picom em `/etc/xdg/picom.conf`.
 
 :::info
 
-If you're having screen-tearing issues, using `glx` backend can solve this issue. <br/>
-If you're facing lagging, hangs and freezes, try switching between `xrender` and `glx` backend.  
+Se você estiver tendo problemas de tearing na tela, usar o backend `glx` pode resolver esse problema. <br/>
+Se você estiver enfrentando lentidão, travamentos ou congelamentos, tente alternar entre os backends `xrender` e `glx`.
 
 :::
 
-### Window Manager
+### Gerenciador de Janelas
 
-The configuration of Berry is available in `~/.config/berry`. To configure Berry window manager, these are the files that are used :
+A configuração do Berry está disponível em `~/.config/berry`. Para configurar o gerenciador de janelas Berry, estes são os arquivos usados:
 
-**`autostart`** : main configuration file responsible for determining the behaviour and settings of the overall session. Edit this file to configure Berry's appearance. <br/>
-**`sxhkdrc`** : Berry does not handle any keyboard input and instead provides the `berryc` program as its interface. So, For keyboard shortcuts, a hotkey daemon `sxhkd` is used. Edit this file to add/remove keybindings.
+**`autostart`**: arquivo de configuração principal responsável por determinar o comportamento e as configurações da sessão como um todo. Edite este arquivo para configurar a aparência do Berry. <br/>
+**`sxhkdrc`**: O Berry não lida com entradas de teclado diretamente e, em vez disso, fornece o programa `berryc` como sua interface. Para os atalhos de teclado, um daemon de hotkeys chamado `sxhkd` é utilizado. Edite este arquivo para adicionar/remover combinações de teclas.
 
-> If you need any help with berry configuration, visit : [berrywm.org](https://berrywm.org/) <br/>
-> If you need any help with sxhkd configuration, run : `man sxhkd` in terminal.
+> Se precisar de ajuda com a configuração do Berry, visite: [berrywm.org](https://berrywm.org/) <br/>
+> Se precisar de ajuda com a configuração do sxhkd, execute: `man sxhkd` no terminal.
 
-<!-- Keybindings ---------------------------------- -->
+<!-- Atalhos de teclado ---------------------------------- -->
 
-## Keybindings
+## Atalhos de Teclado
 
-Here's a list of some important keybinds you need to know for operating Berry easily. If you want to view, modify or add new keybinds, Edit `~/.config/berry/sxhkdrc` file.
+Aqui está uma lista de alguns atalhos de teclado importantes que você precisa saber para operar o Berry facilmente. Se quiser visualizar, modificar ou adicionar novos atalhos, edite o arquivo `~/.config/berry/sxhkdrc`.
 
-### Applications
+### Aplicações
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + Return</kbd> | Open terminal (alacritty) |
-| <kbd>super + shift + Return</kbd> | Open fullscreen terminal |
-| <kbd>super + F</kbd> | Open file manager (thunar) |
-| <kbd>super + E</kbd> | Open text editor (geany) |
-| <kbd>super + W</kbd> | Open web browser (firefox) |
+| <kbd>super + Return</kbd> | Abre terminal (alacritty) |
+| <kbd>super + shift + Return</kbd> | Abre terminal em tela cheia |
+| <kbd>super + F</kbd> | Abre gerenciador de arquivos (thunar) |
+| <kbd>super + E</kbd> | Abre editor de texto (geany) |
+| <kbd>super + W</kbd> | Abre navegador web (firefox) |
 
-### Menu and Applets
+### Menu e Applets
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super</kbd> | Open application launcher |
-| <kbd>alt + F1</kbd> | Open application launcher |
-| <kbd>alt + F2</kbd> | Open command runner |
-| <kbd>super + N</kbd> | Open network manager applet |
-| <kbd>super + B</kbd> | Open bluetooth applet |
-| <kbd>super + M</kbd> | Open music applet |
-| <kbd>super + X</kbd> | Open powermenu applet |
-| <kbd>super + S</kbd> | Open screenshots applet |
-| <kbd>super + R</kbd> | Open apps as root applet |
+| <kbd>super</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F1</kbd> | Abre lançador de aplicativos |
+| <kbd>alt + F2</kbd> | Abre executador de comandos |
+| <kbd>super + N</kbd> | Abre applet de gerenciador de rede |
+| <kbd>super + B</kbd> | Abre applet de bluetooth |
+| <kbd>super + M</kbd> | Abre applet de música |
+| <kbd>super + X</kbd> | Abre applet de menu de energia |
+| <kbd>super + S</kbd> | Abre applet de capturas de tela |
+| <kbd>super + R</kbd> | Abre applet para executar aplicativos como root |
 
-### Hardware Keys
+### Atalhos de Hardware
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>Print</kbd> | Take screenshot |
-| <kbd>alt + Print</kbd> | Take screenshot in 5 seconds delay |
-| <kbd>shift + Print</kbd> | Take screenshot in 10 seconds delay |
-| <kbd>ctrl + Print</kbd> | Take screenshot of currently focused window |
-| <kbd>super + Print</kbd> | Take screenshot of selected area |
-| <kbd>XF86AudioRaiseVolume</kbd> | Increase volume |
-| <kbd>XF86AudioLowerVolume</kbd> | Decrease volume |
-| <kbd>XF86AudioMute</kbd> | Toggle mute speakers |
-| <kbd>XF86AudioMicMute</kbd> | Toggle mute microphone |
-| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Media controls (MPD) |
-| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
-| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>Print</kbd> | Tira captura de tela |
+| <kbd>alt + Print</kbd> | Tira captura de tela com 5 segundos de atraso |
+| <kbd>shift + Print</kbd> | Tira captura de tela com 10 segundos de atraso |
+| <kbd>ctrl + Print</kbd> | Tira captura de tela da janela focada atualmente |
+| <kbd>super + Print</kbd> | Tira captura de tela da área selecionada |
+| <kbd>XF86AudioRaiseVolume</kbd> | Aumenta volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Diminui volume |
+| <kbd>XF86AudioMute</kbd> | Alterna mudo dos alto-falantes |
+| <kbd>XF86AudioMicMute</kbd> | Alterna mudo do microfone |
+| <kbd>XF86Audio + Next/Prev/Play/Stop</kbd> | Controles de mídia (MPD) |
+| <kbd>XF86MonBrightnessUp</kbd> | Aumenta brilho da tela |
+| <kbd>XF86MonBrightnessDown</kbd> | Diminui brilho da tela |
 
-### Workspaces
-| Keys | Action |
+### Áreas de Trabalho
+
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + 1..9</kbd> | Switch to respective workspace |
-| <kbd>super + shift + 1..9</kbd> | Send focused window to respective workspace |
+| <kbd>super + 1..9</kbd> | Alterna para a área de trabalho respectiva |
+| <kbd>super + shift + 1..9</kbd> | Envia a janela focada para a área de trabalho respectiva |
 
-### Window Management
+### Gerenciamento de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + shift + Left/Down/Up/Right</kbd> | Resize window |
-| <kbd>super + ctrl + Left/Down/Up/Right</kbd> | Move window |
-| <kbd>super + Left</kbd> | Snap left |
-| <kbd>super + Right</kbd> | Snap right |
-| <kbd>super + Up</kbd> | Maximize window |
-| <kbd>super + Down</kbd> | Resize and center window with fixed geometry |
-| <kbd>super + Space</kbd> | Toggle fullscreen |
-| <kbd>super + T</kbd> | Toggle decorations |
-| <kbd>super + Tab</kbd> | Cycle focused windows |
-| <kbd>alt + Tab</kbd> | Cycle focused windows |
-| <kbd>super + C</kbd> | Center window |
-| <kbd>super + Q</kbd> | Close focused window |
-| <kbd>super + shift + C</kbd> | Close focused window |
+| <kbd>super + shift + Esquerda/Para baixo/Cima/Direita</kbd> | Redimensiona janela |
+| <kbd>super + ctrl + Esquerda/Para baixo/Cima/Direita</kbd> | Move janela |
+| <kbd>super + Esquerda</kbd> | Anexa à esquerda |
+| <kbd>super + Direita</kbd> | Anexa à direita |
+| <kbd>super + Cima</kbd> | Maximiza janela |
+| <kbd>super + Para baixo</kbd> | Redimensiona e centraliza janela com geometria fixa |
+| <kbd>super + Espaço</kbd> | Alterna tela cheia |
+| <kbd>super + T</kbd> | Alterna decorações |
+| <kbd>super + Tab</kbd> | Alterna entre janelas focadas |
+| <kbd>alt + Tab</kbd> | Alterna entre janelas focadas |
+| <kbd>super + C</kbd> | Centraliza janela |
+| <kbd>super + Q</kbd> | Fecha janela focada |
+| <kbd>super + shift + C</kbd> | Fecha janela focada |
 
-### Window Manager
+### Gerenciador de Janelas
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>super + shift + Q</kbd> | Quit berry |
-| <kbd>super + Escape</kbd> | Reload sxhkd configuration file |
+| <kbd>super + shift + Q</kbd> | Sai do Berry |
+| <kbd>super + Escape</kbd> | Recarrega o arquivo de configuração do sxhkd |
 
-### Misc Keys
+### Atalhos Diversos
 
-| Keys | Action |
+| Atalho | Ação |
 | --- | --- |
-| <kbd>ctrl + alt + M</kbd> | Open ncmpcpp with album art in terminal |
-| <kbd>ctrl + alt + L</kbd> | Trigger lockscreen |
-| <kbd>super + P</kbd> | Run colorpicker  |
+| <kbd>ctrl + alt + M</kbd> | Abri ncmpcpp com arte do álbum no terminal |
+| <kbd>ctrl + alt + L</kbd> | Ativa a tela de bloqueio |
+| <kbd>super + P</kbd> | Executa o seletor de cores |
 
-<!-- Themes --------------------------------------- -->
+<!-- Temas --------------------------------------- -->
 
 ## Screenshots
 
-Here's few screenshots of `Berry` desktop. These'll give you an idea of the experience of Berry in Archcraft. 
+Aqui estão algumas capturas de tela da área de trabalho do `Berry`. Elas te darão uma ideia da experiência do Berry no Archcraft.
 
 |Desktop 1|Desktop 2|Desktop 3|Desktop 4|
 |---|---|---|---|
@@ -261,18 +262,19 @@ Here's few screenshots of `Berry` desktop. These'll give you an idea of the expe
 ## FAQs
 
 <details>
-<summary><b>How to update my config to new configs?</b></summary>
+<summary><b>Como atualizar minha configuração para as novas configurações?</b></summary>
 
-When a new version of Archcraft Berry get released, And you update the system by `sudo pacman -Syu` or you update the Berry package by `sudo pacman -S archcraft-berry`, New config files get installed as **berry_pacnew_YYYY-MM-DD** in your `~/.config` directory.
+Quando uma nova versão do Archcraft Berry for lançada, e você atualizar o sistema com `sudo pacman -Syu` ou atualizar o pacote Berry com `sudo pacman -S archcraft-berry`, novos arquivos de configuração serão instalados como **berry_pacnew_YYYY-MM-DD** no seu diretório `~/.config`.
 
-To use new configs, backup your old `~/.config/berry` directory and move `~/.config/berry_pacnew_YYYY-MM-DD` to `~/.config/berry` and login again.
+Para usar as novas configurações, faça backup do seu antigo diretório `~/.config/berry` e mova o diretório `~/.config/berry_pacnew_YYYY-MM-DD` para `~/.config/berry` e faça login novamente.
 
 </details>
 
 <details>
-<summary><b>How to change GTK theme, icons and cursor?</b></summary>
+<summary><b>Como alterar o tema GTK, ícones e cursor?</b></summary>
 
-To change GTK theme, icons and cursor in Berry session, Edit `~/.config/berry/xsettingsd` file and restart Berry to apply the changes.
+Para alterar o tema GTK, ícones e cursor na sessão Berry, edite o arquivo `~/.config/berry/xsettingsd` e reinicie o Berry para aplicar as alterações.
+
 ```bash
 Net/ThemeName "Catppuccin-Mocha"
 Net/IconThemeName "Luv-Folders-Dark"
@@ -282,18 +284,18 @@ Gtk/CursorThemeName "Sweet"
 </details>
 
 <details>
-<summary><b>How to manage multiple monitors and resolution in Berry?</b></summary>
+<summary><b>Como gerenciar múltiplos monitores e resolução no Berry?</b></summary>
 
-If you use multiple monitors with Berry window manager, you can manage them by running _Manager Monitors_ or `archcraft-randr` app.
+Se você usa múltiplos monitores com o gerenciador de janelas Berry, pode gerenciá-los executando o _Manager Monitors_ ou o aplicativo `archcraft-randr`.
 
 </details>
 
 <details>
-<summary><b>Why Alacritty is not working on my computer?</b></summary>
+<summary><b>Por que o Alacritty não está funcionando no meu computador?</b></summary>
 
-Since Alacritty is a OpenGL based terminal emulator, It may not work on some computer hardwares. You can make it work on such computers by following these methods :
+Como o Alacritty é um emulador de terminal baseado em OpenGL, ele pode não funcionar em alguns hardwares de computador. Você pode fazê-lo funcionar em tais computadores seguindo estes métodos:
 
-1. Open alacritty with **LIBGL_ALWAYS_SOFTWARE=1** variable. Edit the keybindings/script launching alacritty and replace `alacritty` with `LIBGL_ALWAYS_SOFTWARE=1 alacritty`
-2. Edit **/usr/share/applications/Alacritty.desktop** desktop file and replace `Exec=alacritty` with `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`
+1. Abra o Alacritty com a variável **LIBGL_ALWAYS_SOFTWARE=1**. Edite os keybindings/script que lançam o Alacritty e substitua `alacritty` por `LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
+2. Edite o arquivo **/usr/share/applications/Alacritty.desktop** e substitua `Exec=alacritty` por `Exec=env LIBGL_ALWAYS_SOFTWARE=1 alacritty`.
 
 </details>
